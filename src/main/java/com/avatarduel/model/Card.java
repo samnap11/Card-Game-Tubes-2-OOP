@@ -1,5 +1,8 @@
 package com.avatarduel.model;
 
+
+import com.avatarduel.field.Field;
+
 public abstract class Card {
     protected String name;
     protected String description;

@@ -1,5 +1,8 @@
 package com.avatarduel.model;
 
+import com.avatarduel.field.Field;
+
+
 public abstract class Skill extends Card {
     int power_cost;
 
@@ -19,7 +22,7 @@ public abstract class Skill extends Card {
     @Override
     public void place(Field field) throws CardException {
         // TODO: show field list, pick one, then give the effect to the selected one.
-        effect();
+        // this.effect();
     }
 
     @Override

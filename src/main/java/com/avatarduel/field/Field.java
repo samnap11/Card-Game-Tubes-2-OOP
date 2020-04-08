@@ -5,8 +5,11 @@ import javafx.util.Pair;
 
 import com.avatarduel.*;
 import com.avatarduel.model.Element;
+import com.avatarduel.model.Card;
+// import com.avatarduel.model.Character;
+// import com.avatarduel.model.Skill;
 
-class Field{
+public class Field{
     private ArrayList<FieldTileCharacter> CField;
     private ArrayList<FieldTileSpell> SField;
     private Map<Element,Pair<Integer,Integer>> Land;
@@ -29,19 +32,23 @@ class Field{
         Land.put(el.AIR,new Pair<Integer,Integer>(1,1));
     }
 
-    public void addCard(int i, Card C){
-        if (C instanceof CharacterCard){
-            CField.get(i).setCard(C);
-        }else if (C instanceof SpellCard){
-            SField.get(i).setCard(C);
-        }else{
-            return;
-        }
+    // public void addCard(int i, Card C) throws WrongCardException{
+    //     if (C instanceof Character){
+    //         CField.get(i).setCard(C);
+    //     }else if (C instanceof Skill){
+    //         SField.get(i).setCard(C);
+    //     }else{
+    //         throw new WrongCardException();
+    //     }
         
-    }
+    // }
 
     public void LandCard(Card C){
 
     }
 
+}
+
+class WrongCardException extends Exception{
+    public WrongCardException(){}
 }

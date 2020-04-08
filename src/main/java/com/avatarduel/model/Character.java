@@ -1,5 +1,8 @@
 package com.avatarduel.model;
 
+
+import com.avatarduel.field.Field;
+
 public class Character extends Card {
     protected int attack;
     protected int defense;

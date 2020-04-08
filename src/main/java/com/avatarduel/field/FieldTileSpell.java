@@ -1,21 +1,22 @@
 package com.avatarduel.field;
-
+// import com.avatarduel.model.Character;
+import com.avatarduel.model.Skill;
 
 import java.util.*;
 
 
 public class FieldTileSpell{
-    private Optional<SpellCard> isi;
+    private Optional<Skill> isi;
 
     public FieldTileSpell(){
 
     }
 
-    public void setCard(SpellCard C){
+    public void setCard(Skill C){
         isi = Optional.of(C);
     }
 
-    public Optional<SpellCard> getCard(){
+    public Optional<Skill> getCard(){
         return isi;
     }
 }

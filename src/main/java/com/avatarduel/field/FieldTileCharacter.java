@@ -2,20 +2,29 @@ package com.avatarduel.field;
 
 
 import java.util.*;
-
+import com.avatarduel.model.Character;
+// import com.avatarduel.model.Skill;
 
 public class FieldTileCharacter{
-    private Optional<CharacterCard> isi;
+    private Optional<Character> isi;
 
     public FieldTileCharacter(){
 
     }
 
-    public void setCard(CharacterCard C){
+    public void setCard(Character C){
         isi = Optional.of(C);
     }
 
-    public Optional<CharacterCard> getCard(){
+    public Optional<Character> getCard(){
         return isi;
     }
+
+    public void remove(){
+        if (isi.isPresent()){
+            isi = isi.empty();
+        }
+    }
+
+
 }

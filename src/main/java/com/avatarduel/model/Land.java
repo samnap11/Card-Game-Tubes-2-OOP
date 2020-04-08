@@ -1,5 +1,8 @@
 package com.avatarduel.model;
 
+
+import com.avatarduel.field.Field;
+
 public class Land extends Card {
     int power_provided;
 
