@@ -1,5 +1,7 @@
 package com.avatarduel.deck;
 import java.util.*;
+
+import com.avatarduel.model.Card;
 public class Deck {
     private String user;
     private Stack<Card> isi;
@@ -17,7 +19,7 @@ public class Deck {
     // tidak dapat dilakukan shuffle kalo stack kosong
     public void Shuffle(){
 
-        String temp;
+        Card temp;
         List<Card> dck = new ArrayList<>();
         for(Card i: isi){
             dck.add(i);
