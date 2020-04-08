@@ -1,9 +1,11 @@
-import java.util.*;
 package com.avatarduel.player;
+import java.util.*;
+
+import tubes.Card;
 
 public class Player {
     private int hp;
-    protected Arraylist<Card> hand;
+    protected ArrayList<Card> hand;
     protected Deck pDeck;
     protected Map<Element, Pair<integer,integer>> element;
 
@@ -42,11 +44,19 @@ public class Player {
     }
 
     public Card peekCard(int x){
-        return hand.get(x);
+        if (hand.size() > x) return hand.get(x);
+        return null;
     }
 
     public int sizeHand(){
-        return hand.size;
+        return hand.size();
     }
 
+    public void removeHand(int x){
+        if (hand.size() > x) hand.remove(x);
+    }
+
+    public void removeHandCard(Card cx){
+        if (hand.contains(cx)) hand.remove(hand.indexOf(cx));
+    }
 }
