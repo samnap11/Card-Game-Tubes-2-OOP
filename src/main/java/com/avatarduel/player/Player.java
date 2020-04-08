@@ -1,6 +1,5 @@
 import java.util.*;
-
-// package com.avatarduel.player;
+package com.avatarduel.player;
 
 public class Player {
     private int hp;
