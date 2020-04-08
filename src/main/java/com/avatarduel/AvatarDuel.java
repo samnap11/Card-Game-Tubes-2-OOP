@@ -23,7 +23,7 @@ public class AvatarDuel extends Application {
     landReader.setSkipHeader(true);
     List<String[]> landRows = landReader.read();
     for (String[] row : landRows) {
-      Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
+     // Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
     }
   }
 
