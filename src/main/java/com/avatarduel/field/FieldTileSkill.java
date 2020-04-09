@@ -5,10 +5,10 @@ import com.avatarduel.model.Skill;
 import java.util.*;
 
 
-public class FieldTileSpell{
+public class FieldTileSkill{
     private Optional<Skill> isi;
 
-    public FieldTileSpell(){
+    public FieldTileSkill(){
 
     }
 

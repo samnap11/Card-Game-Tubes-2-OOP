@@ -1,18 +1,24 @@
 package com.avatarduel.player;
 import java.util.*;
 
-import tubes.Card;
+import com.avatarduel.model.Card;
+import com.avatarduel.model.Element;
+import javafx.util.Pair;
+import com.avatarduel.gui.CardG;
 
 public class Player {
     private int hp;
     protected ArrayList<Card> hand;
-    protected Deck pDeck;
-    protected Map<Element, Pair<integer,integer>> element;
+    // protected Deck pDeck;
+    protected Map<Element, Pair<Integer,Integer>> element;
+    private Map<Integer,CardG> summonedCards;
 
     public Player(){
         this.hp = 80;
         this.hand = new ArrayList<>();
-        this.pDeck = new Deck();
+        this.summonedCards = new HashMap<>();
+        this.element = new HashMap<>();
+        // this.pDeck = new Deck();
         this.element.put(Element.WATER,new Pair<>(0,0));
         this.element.put(Element.AIR,new Pair<>(0,0));
         this.element.put(Element.FIRE,new Pair<>(0,0));
@@ -27,10 +33,10 @@ public class Player {
         this.hp =hp;
     }
 
-    public void takeCard(){
-        Card now= pDeck.Draw();
-        hand.add(now);
-    }
+    // public void takeCard(){
+    //     Card now= pDeck.Draw();
+    //     hand.add(now);
+    // }
 
     public void addElement(Element el){
         Pair<Integer,Integer> temp = element.get(el);

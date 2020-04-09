@@ -4,8 +4,8 @@ public class Aura extends Skill {
     protected int attack_change;
     protected int defense_change;
 
-    public Aura(String name, String description, Element element, int power_cost, int attack_change, int defense_change) {
-        super(name,description,element,power_cost);
+    public Aura(String name, String description, Element element,String img, int power_cost, int attack_change, int defense_change) {
+        super(name,description,element,img,power_cost);
         this.attack_change = attack_change;
         this.defense_change = defense_change;
     }

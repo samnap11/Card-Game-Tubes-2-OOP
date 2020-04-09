@@ -6,8 +6,8 @@ import com.avatarduel.field.Field;
 public class Land extends Card {
     int power_provided;
 
-    public Land(String name, String description, Element element, int power_provided) {
-        super(name,description,element);
+    public Land(String name, String description, Element element,String img, int power_provided) {
+        super(name,description,element,img);
         this.power_provided = power_provided;
     }
 
