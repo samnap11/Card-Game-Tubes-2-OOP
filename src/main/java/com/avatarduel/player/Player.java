@@ -5,17 +5,26 @@ import com.avatarduel.deck.Deck;
 
 import java.util.*;
 
-
+import com.avatarduel.card.Card;
+import com.avatarduel.card.Element;
+import javafx.util.Pair;
+import javafx.scene.layout.*;
+import com.avatarduel.gui.CardG;
+import com.avatarduel.deck.Deck;
 
 public class Player {
     private int hp;
     protected ArrayList<Card> hand;
-    protected Deck pDeck;
-    protected Map<Element, Pair<integer,integer>> element;
+    public Deck pDeck;
+    protected Map<Element, Pair<Integer,Integer>> element;
+    private Map<Integer,Card> summonedCards;
+    private HBox healthBar = new HBox();
 
     public Player(){
         this.hp = 80;
         this.hand = new ArrayList<>();
+        this.summonedCards = new HashMap<>();
+        this.element = new HashMap<>();
         this.pDeck = new Deck();
         this.element.put(Element.WATER,new Pair<>(0,0));
         this.element.put(Element.AIR,new Pair<>(0,0));
@@ -32,7 +41,7 @@ public class Player {
     }
 
     public void takeCard(){
-        Card now= pDeck.Draw();
+        Card now = pDeck.Draw();
         hand.add(now);
     }
 
@@ -62,5 +71,10 @@ public class Player {
 
     public void removeHandCard(Card cx){
         if (hand.contains(cx)) hand.remove(hand.indexOf(cx));
+    }
+
+    public String getLand(Element e){
+        // Pair<int,int> = element.get(e);
+        return String.format("%d/%d",element.get(e).getKey(),element.get(e).getValue());
     }
 }

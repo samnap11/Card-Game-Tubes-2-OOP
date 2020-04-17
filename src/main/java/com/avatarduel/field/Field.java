@@ -6,12 +6,12 @@ import javafx.util.Pair;
 import com.avatarduel.*;
 import com.avatarduel.card.Element;
 import com.avatarduel.card.Card;
-// import com.avatarduel.model.Character;
-// import com.avatarduel.model.Skill;
+import com.avatarduel.card.Character;
+import com.avatarduel.card.Skill;
 
 public class Field{
     private ArrayList<FieldTileCharacter> CField;
-    private ArrayList<FieldTileSpell> SField;
+    private ArrayList<FieldTileSkill> SField;
     private Map<Element,Pair<Integer,Integer>> Land;
     private Element el;
 
@@ -23,7 +23,7 @@ public class Field{
         }
         SField = new ArrayList<>();
         for (int i = 0; i < 7; i ++){
-            SField.add(new FieldTileSpell());
+            SField.add(new FieldTileSkill());
         }
         Land = new HashMap<>();
         Land.put(el.WATER,new Pair<Integer,Integer>(1,1));

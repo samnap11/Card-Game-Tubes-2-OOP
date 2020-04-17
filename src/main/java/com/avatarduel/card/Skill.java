@@ -5,8 +5,8 @@ import com.avatarduel.field.Field;
 public abstract class Skill extends Card {
     int power_cost;
 
-    public Skill(String name, String description, Element element, int power_cost) {
-        super(name, description, element);
+    public Skill(String name, String description, Element element,String img, int power_cost) {
+        super(name, description, element,img);
         this.power_cost = power_cost;
     }
 

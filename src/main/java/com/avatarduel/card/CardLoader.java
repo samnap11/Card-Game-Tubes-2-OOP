@@ -20,7 +20,7 @@ public class CardLoader {
     public ArrayList<Card> loadCards() throws IOException, URISyntaxException {
         loadLands();
         loadCharacters();
-        loadSkills();
+        // loadSkills();
         return ret;
     }
     public void loadLands() throws IOException, URISyntaxException {
@@ -29,7 +29,7 @@ public class CardLoader {
         landReader.setSkipHeader(true);
         List<String[]> landRows = landReader.read();
         for(String[] rows: landRows) {
-            Land land = new Land(rows[1], rows[3], Element.valueOf(rows[2]), Integer.parseInt(rows[5]));
+            Land land = new Land(rows[1], rows[3], Element.valueOf(rows[2]),rows[4] ,Integer.parseInt(rows[5]));
             ret.add(land);
         }
     }
@@ -39,7 +39,7 @@ public class CardLoader {
         characterReader.setSkipHeader(true);
         List<String[]> characterRows = characterReader.read();
         for(String[] rows: characterRows) {
-            Character character = new Character(rows[1],rows[3],Element.valueOf(rows[2]),Integer.parseInt(rows[5]),Integer.parseInt(rows[6]),Integer.parseInt(rows[7]));
+            Character character = new Character(rows[1],rows[3],Element.valueOf(rows[2]),rows[4],Integer.parseInt(rows[5]),Integer.parseInt(rows[6]),Integer.parseInt(rows[7]));
             ret.add(character);
         }
     }
