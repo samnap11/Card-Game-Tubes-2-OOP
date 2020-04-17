@@ -1,4 +1,4 @@
-package main.java.com.avatarduel;
+package com.avatarduel;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +18,7 @@ import com.avatarduel.card.*;
 import com.avatarduel.util.CSVReader;
 import com.avatarduel.gui.RegView;
 import com.avatarduel.state.State;
+import com.avatarduel.card.CardLoader;
 
 public class AvatarDuel extends Application {
   private static final String LAND_CSV_FILE_PATH = "card/data/land.csv";
@@ -37,6 +38,8 @@ public class AvatarDuel extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
+    CardLoader c = new CardLoader();
+    
     State.init();
     RegView.loadRegScreen(this);
     Scene scene = new Scene(RegView.Screen);

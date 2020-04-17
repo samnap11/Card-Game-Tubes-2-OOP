@@ -4,7 +4,7 @@ import java.util.*;
 import com.avatarduel.card.Card;
 public class Deck {
     // private String user;
-    private Stack<Card> isi;
+    public Stack<Card> isi;
     public int kap;
     public Deck(){
         // user = " ";
@@ -23,7 +23,7 @@ public class Deck {
     }
     // melakukan pengocokan stack supaya isi menjadi acak
     // tidak dapat dilakukan shuffle kalo stack kosong
-    public void Shuffle(){
+    public void shuffle(){
         Card temp;
         List<Card> dck = new ArrayList<>();
         for(Card i: isi){
@@ -48,9 +48,13 @@ public class Deck {
     }
     // buat ngisi kartu kedalam deck
     //outputnya deck sesuai ukuran stack
-    public void inputDeck(Card[]card){
-        for(int i = 0;i <card.length;i++){
-            isi.push(card[i]);
+    public void inputDeck(ArrayList<Card> Cards){
+        // for(int i = 0;i <card.length;i++){
+        //     isi.push(card[i]);
+        // }
+        for (int i = 0; i < Cards.size() && i < kap; i++){
+            System.out.printf("Hai\n");
+            isi.push(Cards.get(i));
         }
     }
 

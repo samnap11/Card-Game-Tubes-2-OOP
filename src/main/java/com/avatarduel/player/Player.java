@@ -17,7 +17,7 @@ public class Player {
     protected ArrayList<Card> hand;
     public Deck pDeck;
     protected Map<Element, Pair<Integer,Integer>> element;
-    private Map<Integer,Card> summonedCards;
+    public Map<Integer,Card> summonedCards;
     private HBox healthBar = new HBox();
 
     public Player(){
@@ -32,6 +32,11 @@ public class Player {
         this.element.put(Element.EARTH,new Pair<>(0,0));
     }
     
+    public void removeHand(int idx){
+        hand.set(idx,null);
+        hand.remove(null);
+    }
+
     public int getHp(){
         return this.hp;
     }
@@ -43,6 +48,10 @@ public class Player {
     public void takeCard(){
         Card now = pDeck.Draw();
         hand.add(now);
+    }
+
+    public void fillDeck(ArrayList<Card> a){
+        pDeck.inputDeck(a);
     }
 
     public void addElement(Element el){
@@ -61,13 +70,17 @@ public class Player {
         return null;
     }
 
+    public ArrayList<Card> getHand(){
+        return hand;
+    }
+
     public int sizeHand(){
         return hand.size();
     }
 
-    public void removeHand(int x){
-        if (hand.size() > x) hand.remove(x);
-    }
+    // public void removeHand(int x){
+    //     if (hand.size() > x) hand.remove(x);
+    // }
 
     public void removeHandCard(Card cx){
         if (hand.contains(cx)) hand.remove(hand.indexOf(cx));

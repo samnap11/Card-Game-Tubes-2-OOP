@@ -1,6 +1,6 @@
 package com.avatarduel.gui;
 
-import com.avatarduel.*;
+import com.avatarduel.AvatarDuel;
 
 import javafx.geometry.Pos;
 

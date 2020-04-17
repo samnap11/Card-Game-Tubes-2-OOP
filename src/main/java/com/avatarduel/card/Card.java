@@ -103,7 +103,7 @@ public abstract class Card {
         name.setMaxHeight(height * 0.1);
         name.setAlignment(Pos.CENTER);
         name.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
-        name.getChildren().add(new Text(Name));
+        if (width > 150) name.getChildren().add(new Text(Name));
 
         cardName.getChildren().add(name);
 
@@ -136,7 +136,7 @@ public abstract class Card {
         // descText.getChildren().add(new Label(X.description)); // unwrapped
         Label desc = new Label(X.description);
         desc.setWrapText(true);
-        descText.getChildren().add(desc);
+        if (width > 150) descText.getChildren().add(desc);
 
         HBox attDef = new HBox();   //harusnya isinya attack defend kalo mcharacter tapi klo bukan char gimana ya?????/
         attDef.setMinHeight(height * 0.01);
@@ -145,7 +145,7 @@ public abstract class Card {
         attDef.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
         Label det = new Label(X.getDetails());
         det.setFont(new Font("Arial",12));
-        attDef.getChildren().add(det);
+        if (width > 150) attDef.getChildren().add(det);
         
         cardDesc.getChildren().add(descText);
         cardDesc.getChildren().add(attDef);
