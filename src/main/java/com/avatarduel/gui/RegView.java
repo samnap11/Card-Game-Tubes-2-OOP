@@ -15,7 +15,7 @@ public class RegView{
     public static Pane Screen = new Pane();
     
     public static void loadRegScreen(AvatarDuel app){
-        Screen.setMinSize(1440,900);
+        Screen.setMinSize(1400,900);
         Image back = new Image("com/bae.jpg");
         ImageView bg = new ImageView(back);
         bg.setFitWidth(450);
