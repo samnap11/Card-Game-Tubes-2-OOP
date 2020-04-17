@@ -9,4 +9,8 @@ public class Destroy extends Skill {
     public void effect(SummonedCharacter summonedCharacter) {
         summonedCharacter.getCharacter().discard();
     }
+
+    public String getDetails(){
+        return String.format("Destroy %s",element);
+    }
 }

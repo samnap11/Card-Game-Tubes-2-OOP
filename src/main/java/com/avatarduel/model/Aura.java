@@ -26,6 +26,10 @@ public class Aura extends Skill {
         this.defense_change = defense_change;
     }
 
+    public String getDetails(){
+        return String.format("Aura %s",element);
+    }
+
     @Override
     public void effect(SummonedCharacter summonedCharacter) {
         int oldAttack = summonedCharacter.getCharacter().getAttack();

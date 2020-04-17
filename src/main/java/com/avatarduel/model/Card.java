@@ -6,7 +6,8 @@ import com.avatarduel.field.Field;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.geometry.Pos;
-import javafx.scene.text.Text;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.*;
 import javafx.scene.image.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -32,7 +33,7 @@ public abstract class Card {
         this.name = "";
         this.description = "";
         this.element = null;
-        this.img = "com/bae.jpg";
+        this.img = "";
     }
 
     public String getName() {
@@ -75,6 +76,8 @@ public abstract class Card {
         this.element = element;
     }
 
+    abstract public String getDetails();
+
     abstract public void place(Field field) throws CardException;
 
     abstract  public void discard();
@@ -84,6 +87,9 @@ public abstract class Card {
         BorderPane card = new BorderPane();
         card.setMinWidth(width);
         card.setMinHeight(height);
+        card.setMaxWidth(width);
+        card.setMaxHeight(height);
+        card.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
         String Name;
         Element el;
 
@@ -109,23 +115,26 @@ public abstract class Card {
         HBox cardPic = new HBox();
         cardPic.setMinHeight(height / 2);
         cardPic.setMinWidth(width * 0.8);
+        cardPic.setMaxWidth(width * 0.8);
         cardPic.setAlignment(Pos.CENTER);
-        cardPic.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        // cardPic.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
 
         ImageView image = new ImageView();
         image.setFitWidth(width * 0.8);
         image.setFitHeight(height / 2);
-        image.setImage(new Image(X.img));
-
+        if (X.img != ""){
+            image.setImage(new Image(X.img));
+        }
+        
         cardPic.getChildren().add(image);
 
 
         VBox cardDesc = new VBox();
-        cardDesc.setMinHeight(height*135/400);
+        cardDesc.setMinHeight(height*0.3);
         cardDesc.setAlignment(Pos.CENTER);
 
         HBox descText = new HBox();
-        descText.setMaxWidth(width*21/25);
+        descText.setMaxWidth(width*0.8);
         descText.setMinHeight(height*7/40);
         descText.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
         // descText.getChildren().add(new Label(X.description)); // unwrapped
@@ -134,10 +143,13 @@ public abstract class Card {
         descText.getChildren().add(desc);
 
         HBox attDef = new HBox();   //harusnya isinya attack defend kalo mcharacter tapi klo bukan char gimana ya?????/
-        attDef.setMinHeight(height * 0.1);
+        attDef.setMinHeight(height * 0.01);
+        attDef.setMaxWidth(width * 0.8);
         attDef.setAlignment(Pos.CENTER);
         attDef.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
-        attDef.getChildren().add(new Label(X.getElement().toString()));
+        Label det = new Label(X.getDetails());
+        det.setFont(new Font("Arial",12));
+        attDef.getChildren().add(det);
         
         cardDesc.getChildren().add(descText);
         cardDesc.getChildren().add(attDef);
@@ -148,5 +160,26 @@ public abstract class Card {
         card.setBottom(cardDesc);
 
         return card;
+    }
+
+    public static BorderPane closedCard(double width){
+        double height = width * 1.618;
+        BorderPane closed = new BorderPane();
+        closed.setMinWidth(width);
+        closed.setMinHeight(height);
+        closed.setMaxHeight(height);
+        closed.setBackground(new Background(new BackgroundFill(Color.valueOf("4d2204"), CornerRadii.EMPTY, Insets.EMPTY)));
+        closed.setBorder(new Border(new BorderStroke(Color.valueOf("9c6d00"),BorderStrokeStyle.SOLID,null, new BorderWidths(3))));
+        // closed.setAlignment(Pos.CENTER);
+
+        // HBox circle = new HBox();
+        // circle.setAlignment(Pos.CENTER);
+
+        Circle circ = new Circle(width*0.25);
+        circ.setFill(Color.BLACK);
+
+        // circle.getChildren().add(circ);
+        closed.setCenter(circ);
+        return closed;
     }
 }

@@ -9,4 +9,8 @@ public class PowerUp extends Skill {
     public void effect(SummonedCharacter summonedCharacter) {
 
     }
+
+    public String getDetails(){
+        return String.format("PU %s",element);
+    }
 }

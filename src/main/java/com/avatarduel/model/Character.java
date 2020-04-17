@@ -15,6 +15,13 @@ public class Character extends Card {
         this.power_cost = power_cost;
     }
 
+    public Character(){
+        super();
+        this.attack = 0;
+        this.defense = 0;
+        this.power_cost = 0;
+    }
+
     public int getAttack() {
         return attack;
     }
@@ -37,6 +44,10 @@ public class Character extends Card {
 
     public void setPower_cost(int power_cost) {
         this.power_cost = power_cost;
+    }
+
+    public String getDetails(){
+        return String.format("ATK %d DEF %d %s",attack,defense,element);
     }
 
     @Override

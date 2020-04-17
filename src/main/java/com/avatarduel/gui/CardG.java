@@ -4,8 +4,6 @@ import javafx.scene.layout.*;
 
 import com.avatarduel.model.*;
 
-public class CardG extends Pane{
-    ISummon card;
-
+public class CardG{
+    
 }
-//UNUSED (?)

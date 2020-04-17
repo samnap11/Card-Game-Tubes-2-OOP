@@ -11,6 +11,11 @@ public class Land extends Card {
         this.power_provided = power_provided;
     }
 
+    public Land(){
+        super();
+        this.power_provided = 0;
+    }
+
     public int getPower_provided() {
         return power_provided;
     }
@@ -22,6 +27,10 @@ public class Land extends Card {
     @Override
     public void place(Field field) throws CardException {
 
+    }
+
+    public String getDetails(){
+        return String.format("LAND %s %d",element,power_provided);
     }
 
     @Override

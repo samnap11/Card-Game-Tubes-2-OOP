@@ -4,6 +4,7 @@ import java.util.*;
 import com.avatarduel.model.Card;
 import com.avatarduel.model.Element;
 import javafx.util.Pair;
+import javafx.scene.layout.*;
 import com.avatarduel.gui.CardG;
 
 public class Player {
@@ -11,7 +12,8 @@ public class Player {
     protected ArrayList<Card> hand;
     // protected Deck pDeck;
     protected Map<Element, Pair<Integer,Integer>> element;
-    private Map<Integer,CardG> summonedCards;
+    private Map<Integer,Card> summonedCards;
+    private HBox healthBar = new HBox();
 
     public Player(){
         this.hp = 80;

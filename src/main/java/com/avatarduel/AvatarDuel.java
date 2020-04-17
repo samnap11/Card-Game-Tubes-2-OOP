@@ -21,8 +21,8 @@ import com.avatarduel.gui.RegView;
 public class AvatarDuel extends Application {
   private static final String LAND_CSV_FILE_PATH = "card/data/land.csv";
 
-  Stage window;
-  Scene one,two;
+  // Stage window;
+  // Scene one,two;
 
   public void loadCards() throws IOException, URISyntaxException {
     File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
