@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import com.avatarduel.model.*;
 import com.avatarduel.util.CSVReader;
 import com.avatarduel.gui.RegView;
+import com.avatarduel.state.State;
 
 public class AvatarDuel extends Application {
   private static final String LAND_CSV_FILE_PATH = "card/data/land.csv";
@@ -36,6 +37,7 @@ public class AvatarDuel extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
+    State.init();
     RegView.loadRegScreen(this);
     Scene scene = new Scene(RegView.Screen);
 

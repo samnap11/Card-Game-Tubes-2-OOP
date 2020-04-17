@@ -3,5 +3,5 @@ package com.avatarduel.state;
 
 
 public enum Phase{
-    DEFAULT,DRAW,MAIN1,BATTLE,MAIN2,END
+    DRAW,MAIN,BATTLE,MAIN2,END
 };

@@ -3,22 +3,27 @@ import java.util.*;
 
 import com.avatarduel.model.Card;
 public class Deck {
-    private String user;
+    // private String user;
     private Stack<Card> isi;
+    public int kap;
     public Deck(){
-        user = " ";
+        // user = " ";
         isi = new Stack<>();
+        kap = 60;
 
     }
     public Deck( String usr){
-        user = usr;
+        // user = usr;
         isi = new Stack<>();
         
+    }
+
+    public int getSize(){
+        return isi.size();
     }
     // melakukan pengocokan stack supaya isi menjadi acak
     // tidak dapat dilakukan shuffle kalo stack kosong
     public void Shuffle(){
-
         Card temp;
         List<Card> dck = new ArrayList<>();
         for(Card i: isi){
@@ -48,6 +53,7 @@ public class Deck {
             isi.push(card[i]);
         }
     }
+
     //melakukan pop satu kartu dan mengurangi size
     //tidak dapat melakukan pop jika kosong
     public Card Draw(){

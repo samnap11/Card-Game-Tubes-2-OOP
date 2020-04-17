@@ -6,8 +6,8 @@ import javafx.util.Pair;
 import com.avatarduel.*;
 import com.avatarduel.model.Element;
 import com.avatarduel.model.Card;
-// import com.avatarduel.model.Character;
-// import com.avatarduel.model.Skill;
+import com.avatarduel.model.Character;
+import com.avatarduel.model.Skill;
 
 public class Field{
     private ArrayList<FieldTileCharacter> CField;
