@@ -1,6 +1,6 @@
 package com.avatarduel.field;
 // import com.avatarduel.model.Character;
-import com.avatarduel.model.Skill;
+import com.avatarduel.card.Skill;
 
 import java.util.*;
 

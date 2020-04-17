@@ -4,8 +4,8 @@ import java.util.*;
 import javafx.util.Pair;
 
 import com.avatarduel.*;
-import com.avatarduel.model.Element;
-import com.avatarduel.model.Card;
+import com.avatarduel.card.Element;
+import com.avatarduel.card.Card;
 // import com.avatarduel.model.Character;
 // import com.avatarduel.model.Skill;
 

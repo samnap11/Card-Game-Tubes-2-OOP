@@ -1,4 +1,4 @@
-package com.avatarduel;
+package main.java.com.avatarduel;
 
 import java.io.File;
 import java.io.IOException;

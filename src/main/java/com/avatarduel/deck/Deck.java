@@ -1,7 +1,7 @@
 package com.avatarduel.deck;
 import java.util.*;
 
-import com.avatarduel.model.Card;
+import com.avatarduel.card.Card;
 public class Deck {
     private String user;
     private Stack<Card> isi;

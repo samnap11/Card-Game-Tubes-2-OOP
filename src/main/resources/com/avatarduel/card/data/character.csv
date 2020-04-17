@@ -24,7 +24,7 @@ id	name	element	description	imagepath	attack	defense	power
 39	Wan	AIR	The first Avatar.	src/res/image/character/Wan.png	10	10	5
 40	Mechanist	AIR	An inventor and engineer from the Earth Kingdom who became a refugee after being displaced by a flood.	src/res/image/character/Mechanist.png	8	8	3
 41	Zuko	FIRE	Prince of the Fire Nation, Fire Lord after Ozai.	src/res/image/character/Zuko.png	12	8	5
-42	Azula	FIRE	Princess of the Fire Nation, daughter of Fire Lord Ozai.	src/res/image/character/Azula.png	11	7	4
+42	Azula	FIRE	Princess of the Fire Nation, daughter of Fire Lord Ozai.	src/res/image/character/Azula.png	11	7   4
 43	Ozai	FIRE	Fire Lord during the final years of the Hundred Year War.	src/res/image/character/Ozai.png	9	9	4
 44	Ty Lee	FIRE	Skilled acrobatic, mastering chi blocking martial arts.	src/res/image/character/Ty Lee.png	9	4	2
 45	Combustion Man	FIRE	Firebending assassin and silent bounty hunter that was hired by Zuko to eliminate Aang.	src/res/image/character/Combustion Man.png	11	4	3

@@ -1,7 +1,11 @@
 package com.avatarduel.player;
+import com.avatarduel.card.Card;
+import com.avatarduel.card.Element;
+import com.avatarduel.deck.Deck;
+
 import java.util.*;
 
-import tubes.Card;
+
 
 public class Player {
     private int hp;

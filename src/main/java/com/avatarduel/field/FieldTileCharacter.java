@@ -2,7 +2,7 @@ package com.avatarduel.field;
 
 
 import java.util.*;
-import com.avatarduel.model.Character;
+import com.avatarduel.card.Character;
 // import com.avatarduel.model.Skill;
 
 public class FieldTileCharacter{
