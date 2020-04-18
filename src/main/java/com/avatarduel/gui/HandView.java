@@ -31,6 +31,7 @@ public class HandView{
         hand.getChildren().clear();
         for (int i = 0; i < p.sizeHand(); i ++){
             Card card = p.peekCard(i);
+            // System.out.printf("%s\n",card.getImg());
             BorderPane view = Card.drawCard(card,60);
             HandController.showOnHover(view,p,i);
             HandController.setOnClicked(view,p,i);

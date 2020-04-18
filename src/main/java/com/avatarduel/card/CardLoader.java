@@ -7,36 +7,45 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class CardLoader {
     public static ArrayList<Card> ret;
-    private static final String LAND_CSV_FILE_PATH = "card/data/land.csv";
-    private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
-    private static final String AURA_CSV_FILE_PATH = "card/data/aura.csv";
-    private static final String DESTROY_CSV_FILE_PATH = "card/data/destroy.csv";
-    private static final String POWERUP_CSV_FILE_PATH = "card/data/powerup.csv";
+    private static final String LAND_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/land.csv";
+    private static final String CHARACTER_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/character.csv";
+    private static final String AURA_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/aura.csv";
+    private static final String DESTROY_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/destroy.csv";
+    private static final String POWERUP_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/powerup.csv";
 
     public CardLoader() {
-        ret = new ArrayList<>();
     }
     public ArrayList<Card> loadCards() throws IOException, URISyntaxException {
+        ret = new ArrayList<>();
         loadLands();
         loadCharacters();
         loadSkills();
+        Collections.shuffle(ret);
+        Collections.shuffle(ret);
+        Collections.shuffle(ret);
         return ret;
     }
     public void loadLands() throws IOException, URISyntaxException {
-        File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
-        CSVReader landReader = new CSVReader(landCSVFile,"\t");
-        landReader.setSkipHeader(true);
-        List<String[]> landRows = landReader.read();
-        for(String[] rows: landRows) {
-            Land land = new Land(rows[1], rows[3], Element.valueOf(rows[2]),rows[4] ,Integer.parseInt(rows[5]));
-            ret.add(land);
+        try{
+            File landCSVFile = new File(LAND_CSV_FILE_PATH);
+            CSVReader landReader = new CSVReader(landCSVFile,"\t");
+            landReader.setSkipHeader(true);
+            List<String[]> landRows = landReader.read();
+            for(String[] rows: landRows) {
+                Land land = new Land(rows[1], rows[3], Element.valueOf(rows[2]),rows[4] ,Integer.parseInt(rows[5]));
+                ret.add(land);
+            }
+        }
+        catch (Exception E){
+            System.out.println(E);
         }
     }
     public void loadCharacters() throws IOException, URISyntaxException {
-        File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
+        File characterCSVFile = new File(CHARACTER_CSV_FILE_PATH);
         CSVReader characterReader = new CSVReader(characterCSVFile,"\t");
         characterReader.setSkipHeader(true);
         List<String[]> characterRows = characterReader.read();
@@ -51,7 +60,7 @@ public class CardLoader {
         loadDestroy();
     }
     public void loadAura() throws IOException, URISyntaxException {
-        File auraCSVFile = new File(getClass().getResource(AURA_CSV_FILE_PATH).toURI());
+        File auraCSVFile = new File(AURA_CSV_FILE_PATH);
         CSVReader auraReader = new CSVReader(auraCSVFile,"\t");
         auraReader.setSkipHeader(true);
         List<String[]> auraRows = auraReader.read();
@@ -61,7 +70,7 @@ public class CardLoader {
         }
     }
     public  void loadPowerUp() throws IOException, URISyntaxException {
-        File powerUpCSVFile = new File(getClass().getResource(POWERUP_CSV_FILE_PATH).toURI());
+        File powerUpCSVFile = new File(POWERUP_CSV_FILE_PATH);
         CSVReader powerUpReader = new CSVReader(powerUpCSVFile,"\t");
         powerUpReader.setSkipHeader(true);
         List<String[]> powerUpRows = powerUpReader.read();
@@ -71,7 +80,7 @@ public class CardLoader {
         }
     }
     public  void loadDestroy() throws IOException, URISyntaxException {
-        File destroyCSVFile = new File(getClass().getResource(DESTROY_CSV_FILE_PATH).toURI());
+        File destroyCSVFile = new File(DESTROY_CSV_FILE_PATH);
         CSVReader destroyReader = new CSVReader(destroyCSVFile,"\t");
         destroyReader.setSkipHeader(true);
         List<String[]> destroyRows = destroyReader.read();

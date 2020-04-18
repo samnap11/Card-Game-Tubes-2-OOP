@@ -21,13 +21,13 @@ public class HandController{
     }
 
     public static void clickCard(BorderPane card, Player a, int idx){
-        if(a.peekCard(idx) instanceof com.avatarduel.card.Character){
+        if(a.peekCard(idx) instanceof HasCost){
             if (State.gamePhase == Phase.MAIN){
-                if (a == State.p1 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((com.avatarduel.card.Character) a.peekCard(idx)).getCost()){
+                if (a == State.p1 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((HasCost) a.peekCard(idx)).getCost()){
                     State.clickHand = idx;
                     // HandView.initP1();
                 }
-                else if (a == State.p2 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((com.avatarduel.card.Character) a.peekCard(idx)).getCost()){
+                else if (a == State.p2 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((HasCost) a.peekCard(idx)).getCost()){
                     State.clickHand = idx + 10;
                     // HandView.initP2();
                 }
@@ -38,6 +38,9 @@ public class HandController{
             ((Land) a.peekCard(idx)).activate(a);
             a.removeHand(idx);
         }
+        // else if (a.peekCard(idx) instanceof com.avatarduel.card.Skill){
+        //     State.clickHand
+        // }
         // card.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
     }
 }

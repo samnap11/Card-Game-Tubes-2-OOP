@@ -1,7 +1,7 @@
 package com.avatarduel.card;
 
 
-import com.avatarduel.field.Field;
+// import com.avatarduel.field.Field;
 import com.avatarduel.player.Player;
 import com.avatarduel.gui.*;
 

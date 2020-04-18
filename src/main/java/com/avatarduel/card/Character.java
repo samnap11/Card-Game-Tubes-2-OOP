@@ -1,12 +1,12 @@
 package com.avatarduel.card;
 
 
-import com.avatarduel.field.Field;
+// import com.avatarduel.field.Field;
 import com.avatarduel.player.Player;
 import com.avatarduel.gui.FieldG;
 import javafx.util.Pair;
 
-public class Character extends Card {
+public class Character extends Card implements HasCost{
     protected int attack;
     protected int defense;
     protected int power_cost;
@@ -51,9 +51,18 @@ public class Character extends Card {
         this.defense = defense;
     }
 
+    public int getBonus(){
+        return attackBonus + defenseBonus;
+    }
+
     public void giveBonus(int attack, int defense){
-        attackBonus = attack;
-        defenseBonus = defense;
+        attackBonus += attack;
+        defenseBonus += defense;
+    }
+
+    public void takeBonus(int attack, int defense){
+        attackBonus -= attack;
+        defenseBonus -= defense;
     }
 
     public void setPower_cost(int power_cost) {
@@ -61,7 +70,7 @@ public class Character extends Card {
     }
 
     public String getDetails(){
-        return String.format("ATK %d DEF %d %s\nCOST %d",attack,defense,element,power_cost);
+        return String.format("ATK %d DEF %d %s\nCOST %d",getAttack(),getDefense(),element,power_cost);
     }
 
     public static void Battle(Player p1, Player p2, int attack, int defense){

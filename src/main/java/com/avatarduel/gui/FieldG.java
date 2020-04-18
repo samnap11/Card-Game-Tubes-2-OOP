@@ -63,7 +63,7 @@ public class FieldG{
         // card.setMinWidth(200);
         // card.setAlignment(Pos.CENTER);
         // card.getChildren().add(cardOnDisplay);
-        cardDisp.getChildren().add(Card.drawCard(Card.getSuzy(),200));
+        cardDisp.getChildren().add(Card.drawCard(Card.getSuzy(),230));
         store.getChildren().add(cardDisp);
         // card.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));   
 
@@ -327,7 +327,7 @@ public class FieldG{
     
     public static void changeDisplay(Card card){
         cardDisp.getChildren().clear();
-        cardDisp.getChildren().add(Card.drawCard(card,200));
+        cardDisp.getChildren().add(Card.drawCard(card,230));
 
         // gameView();
     }

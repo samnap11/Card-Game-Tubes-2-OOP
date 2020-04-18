@@ -1,9 +1,10 @@
 package com.avatarduel.card;
 
-import com.avatarduel.field.Field;
-import com.sun.jmx.snmp.SnmpUnknownModelException;
+// import com.avatarduel.field.Field;
+import com.avatarduel.player.Player;
+// import com.sun.jmx.snmp.SnmpUnknownModelException;
 
-public abstract class Skill extends Card {
+public abstract class Skill extends Card implements HasCost{
     int power_cost;
 
     public Skill(String name, String description, Element element,String img, int power_cost) {
@@ -11,7 +12,7 @@ public abstract class Skill extends Card {
         this.power_cost = power_cost;
     }
 
-    public int getPower_cost() {
+    public int getCost() {
         return power_cost;
     }
 
@@ -19,7 +20,7 @@ public abstract class Skill extends Card {
         this.power_cost = power_cost;
     }
 
-    abstract public void effect(SummonedCharacter summonedCharacter);
+    abstract public void effect(Player p,int idx);
 
-    abstract public void deeffect(SummonedCharacter summonedCharacter);
+    // abstract public void deeffect(SummonedCharacter summonedCharacter);
 }

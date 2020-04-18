@@ -5,7 +5,7 @@ import com.avatarduel.deck.Deck;
 
 import java.util.*;
 
-import com.avatarduel.card.Card;
+import com.avatarduel.card.*;
 import com.avatarduel.card.Element;
 import javafx.util.Pair;
 import javafx.scene.layout.*;
@@ -20,6 +20,7 @@ public class Player {
     public Map<Element, Pair<Integer,Integer>> element;
     public Map<Integer,Card> summonedCards;
     public Map<Integer,Pair<Boolean,Boolean>> cardInfo;
+    public List<Integer> powerUp;
     private HBox healthBar = new HBox();
 
     public Player(){
@@ -28,11 +29,13 @@ public class Player {
         this.summonedCards = new HashMap<>();
         this.element = new HashMap<>();
         this.cardInfo = new HashMap<>();
+        this.powerUp = new ArrayList<>();
         this.pDeck = new Deck();
-        this.element.put(Element.WATER,new Pair<>(1,1));
-        this.element.put(Element.AIR,new Pair<>(1,1));
-        this.element.put(Element.FIRE,new Pair<>(1,1));
-        this.element.put(Element.EARTH,new Pair<>(1,1));
+        this.element.put(Element.WATER,new Pair<>(100,100));
+        this.element.put(Element.AIR,new Pair<>(100,100));
+        this.element.put(Element.FIRE,new Pair<>(100,100));
+        this.element.put(Element.EARTH,new Pair<>(100,100));
+        this.element.put(Element.ENERGY,new Pair<>(100,100));
     }
     
     public void removeHand(int idx){
@@ -99,7 +102,7 @@ public class Player {
         }
     }
 
-    public void placeAtField(int clickHand, int idx){
+    public void placeAtField(int idx){
         int click = this == State.p1 ? State.clickHand : State.clickHand - 10;
         element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((com.avatarduel.card.Character) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
         summonedCards.put(idx,peekCard(click));
@@ -109,9 +112,26 @@ public class Player {
         removeHand(click);
         FieldG.updateLand(this);
     }
-    // public void removeHand(int x){
-    //     if (hand.size() > x) hand.remove(x);
-    // }
+    
+    public void useSkill(int idx){
+        int click = State.checkTurn(State.p1) ? State.clickHand : State.clickHand - 10;
+        Player p = idx > 11 ? State.p1 : State.p2;
+        ((Skill) peekCard(click)).effect(p,idx);
+        element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((HasCost) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
+        int x = this == State.p1 ? 18 : 0;
+        for (int i = x; i < x+6; i ++){
+            if (summonedCards.get(i) == null){
+                System.out.printf("%d\n%s\n",i,peekCard(click).getDetails());
+                summonedCards.put(i,peekCard(click));
+                FieldG.boxes.get(i).getChildren().add(Card.drawCard(peekCard(click),100));
+                cardInfo.put(i,new Pair<>(true,true));
+                break;
+            }
+        }
+        State.clickHand = -1;
+        removeHand(click);
+        FieldG.initField(this);
+    }
 
     public void removeHandCard(Card cx){
         if (hand.contains(cx)) hand.remove(hand.indexOf(cx));

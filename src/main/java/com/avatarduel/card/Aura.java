@@ -1,5 +1,8 @@
 package com.avatarduel.card;
 
+
+import com.avatarduel.player.Player;
+
 public class Aura extends Skill {
     protected int attack_change;
     protected int defense_change;
@@ -27,22 +30,11 @@ public class Aura extends Skill {
     }
 
     public String getDetails(){
-        return String.format("Aura %s",element);
+        return String.format("Aura %s COST %d\n ATT %d DEF %d",element,getCost(),attack_change,defense_change);
     }
 
     @Override
-    public void effect(SummonedCharacter summonedCharacter) {
-        int oldAttack = summonedCharacter.getCharacter().getAttack();
-        int oldDefense = summonedCharacter.getCharacter().getDefense();
-        summonedCharacter.getCharacter().setAttack(oldAttack + attack_change);
-        summonedCharacter.getCharacter().setDefense(oldDefense + defense_change);
-    }
-
-    @Override
-    public void deeffect(SummonedCharacter summonedCharacter) {
-        int oldAttack = summonedCharacter.getCharacter().getAttack();
-        int oldDefense = summonedCharacter.getCharacter().getDefense();
-        summonedCharacter.getCharacter().setAttack(oldAttack - attack_change);
-        summonedCharacter.getCharacter().setDefense(oldDefense - defense_change);
+    public void effect(Player p,int idx) {
+        ((com.avatarduel.card.Character) p.summonedCards.get(idx)).giveBonus(attack_change,defense_change);
     }
 }

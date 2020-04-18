@@ -1,7 +1,7 @@
 package com.avatarduel.card;
 
 
-import com.avatarduel.field.Field;
+// import com.avatarduel.field.Field;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -66,6 +66,10 @@ public abstract class Card {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImg(){
+        return img;
     }
 
     public void setDescription(String description) {
@@ -143,6 +147,10 @@ public abstract class Card {
         attDef.setMaxWidth(width * 0.8);
         attDef.setAlignment(Pos.CENTER);
         attDef.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+        if (X instanceof com.avatarduel.card.Character){
+            if (((Character) X).getBonus() > 0) attDef.setBorder(new Border(new BorderStroke(Color.GREEN,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+            else if (((Character) X).getBonus() < 0) attDef.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+        }
         Label det = new Label(X.getDetails());
         det.setFont(new Font("Arial",12));
         if (width > 150) attDef.getChildren().add(det);
