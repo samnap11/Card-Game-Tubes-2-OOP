@@ -37,4 +37,12 @@ public class Aura extends Skill {
         summonedCharacter.getCharacter().setAttack(oldAttack + attack_change);
         summonedCharacter.getCharacter().setDefense(oldDefense + defense_change);
     }
+
+    @Override
+    public void deeffect(SummonedCharacter summonedCharacter) {
+        int oldAttack = summonedCharacter.getCharacter().getAttack();
+        int oldDefense = summonedCharacter.getCharacter().getDefense();
+        summonedCharacter.getCharacter().setAttack(oldAttack - attack_change);
+        summonedCharacter.getCharacter().setDefense(oldDefense - defense_change);
+    }
 }

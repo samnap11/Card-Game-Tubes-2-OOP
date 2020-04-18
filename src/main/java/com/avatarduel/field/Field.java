@@ -48,7 +48,3 @@ public class Field{
     }
 
 }
-
-class WrongCardException extends Exception{
-    public WrongCardException(){}
-}

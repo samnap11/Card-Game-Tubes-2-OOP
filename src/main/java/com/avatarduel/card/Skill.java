@@ -1,6 +1,7 @@
 package com.avatarduel.card;
 
 import com.avatarduel.field.Field;
+import com.sun.jmx.snmp.SnmpUnknownModelException;
 
 public abstract class Skill extends Card {
     int power_cost;
@@ -19,4 +20,6 @@ public abstract class Skill extends Card {
     }
 
     abstract public void effect(SummonedCharacter summonedCharacter);
+
+    abstract public void deeffect(SummonedCharacter summonedCharacter);
 }

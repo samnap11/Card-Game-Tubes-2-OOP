@@ -4,11 +4,15 @@ public class SummonedCharacter implements ISummon {
     Character character;
     boolean attackPos;
     boolean faceUp;
+    boolean poweredUp;
+    boolean destroyed;
 
     public SummonedCharacter(Character character) {
         this.character = character;
         attackPos = true;
         faceUp = true;
+        poweredUp = false;
+        destroyed = false;
     }
 
     public Character getCharacter() {
@@ -21,6 +25,22 @@ public class SummonedCharacter implements ISummon {
 
     public boolean isFaceUp() {
         return faceUp;
+    }
+
+    public void setPoweredUp(boolean poweredUp) {
+        this.poweredUp = poweredUp;
+    }
+
+    public boolean isPoweredUp() {
+        return poweredUp;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        this.destroyed = destroyed;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
     }
 
     @Override
@@ -46,4 +66,6 @@ public class SummonedCharacter implements ISummon {
             return character.getDefense();
         }
     }
+
+
 }

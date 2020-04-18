@@ -7,6 +7,11 @@ public class Destroy extends Skill {
 
     @Override
     public void effect(SummonedCharacter summonedCharacter) {
+        summonedCharacter.setDestroyed(true);
+    }
+
+    @Override
+    public void deeffect(SummonedCharacter summonedCharacter) {
 
     }
 
