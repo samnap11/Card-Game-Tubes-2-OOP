@@ -28,10 +28,9 @@ public class Buttons{
     }
 
     public static void init(){
-        State.gamePhase = Phase.DRAW;
         drawPhaseButton.setDisable(true);
-        main1PhaseButton.setDisable(false);
-        battlePhaseButton.setDisable(true);
+        main1PhaseButton.setDisable(true);
+        battlePhaseButton.setDisable(false);
         // main2PhaseButton.setDisable(true);
         endPhaseButton.setDisable(true);
         main1PhaseButton.setOnAction(e -> nextPhase(main1PhaseButton,battlePhaseButton));

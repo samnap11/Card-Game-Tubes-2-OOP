@@ -2,6 +2,8 @@ package com.avatarduel.card;
 
 
 import com.avatarduel.field.Field;
+import com.avatarduel.player.Player;
+import com.avatarduel.gui.*;
 
 public class Land extends Card {
     int power_provided;
@@ -22,6 +24,11 @@ public class Land extends Card {
 
     public void setPower_provided(int power_provided) {
         this.power_provided = power_provided;
+    }
+
+    public void activate(Player p){
+        p.addElement(element,power_provided);
+        FieldG.updateLand(p);
     }
 
     public String getDetails(){
