@@ -202,7 +202,7 @@ public class FieldG{
             HBox b = new HBox();
             b.setMinSize(size,height);
             b.setAlignment(Pos.CENTER);
-            b.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+            b.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
             boxes.add(b);
             FieldController.setFieldClick(boxes.size()-1,p);
             FieldController.setFieldHover(boxes.size()-1,p);
@@ -213,6 +213,23 @@ public class FieldG{
         }
         return boxField;
     }
+
+    public static void initField(Player p){
+        int x = p == State.p1 ? 12 : 0;
+        for (int i = 0 + x; i < 12 + x; i++){
+            // System.out.printf("Haloo %d\n",i);
+            boxes.get(i).getChildren().clear();
+            if (p.summonedCards.get(i) != null){
+                // System.out.printf("Halo %d\n",i);
+                // boxes.get(i).getChildren().clear();
+                BorderPane card = Card.drawCard(p.summonedCards.get(i),100);
+                if (!p.cardInfo.get(i).getValue()) card.setRotate(90);
+                if (i == State.clickField) card.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+                boxes.get(i).getChildren().add(card); 
+            }
+        }
+    }
+
     public static BorderPane hpBar(Player pe, ProgressBar barHp){
         int maxHp = 80;
         double curHP;
@@ -239,6 +256,12 @@ public class FieldG{
         barPane.setCenter(plane);
         return barPane;
     }
+    
+    public static void updateHp(Player p){
+        ProgressBar pb = p == State.p1 ? healthp1 : healthp2;
+        pb.setProgress(((double)p.getHp())/80d);
+    }
+
     public static HBox uiDeck(Player P){ //tinggal ditambahi parameter deck
         BorderPane main = new BorderPane();
         // main.getChildren().add(Card.closedCard(100));

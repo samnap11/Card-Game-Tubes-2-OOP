@@ -17,8 +17,9 @@ public class Player {
     private int hp;
     protected ArrayList<Card> hand;
     public Deck pDeck;
-    protected Map<Element, Pair<Integer,Integer>> element;
+    public Map<Element, Pair<Integer,Integer>> element;
     public Map<Integer,Card> summonedCards;
+    public Map<Integer,Pair<Boolean,Boolean>> cardInfo;
     private HBox healthBar = new HBox();
 
     public Player(){
@@ -26,6 +27,7 @@ public class Player {
         this.hand = new ArrayList<>();
         this.summonedCards = new HashMap<>();
         this.element = new HashMap<>();
+        this.cardInfo = new HashMap<>();
         this.pDeck = new Deck();
         this.element.put(Element.WATER,new Pair<>(1,1));
         this.element.put(Element.AIR,new Pair<>(1,1));
@@ -88,13 +90,24 @@ public class Player {
         if (sizeHand() < 10)
             takeCard();
         resetElement();
+        resetInfo();
+    }
+
+    public void resetInfo(){
+        for (int idx : cardInfo.keySet()){
+            cardInfo.put(idx,new Pair<>(false,cardInfo.get(idx).getValue()));
+        }
     }
 
     public void placeAtField(int clickHand, int idx){
         int click = this == State.p1 ? State.clickHand : State.clickHand - 10;
+        element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((com.avatarduel.card.Character) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
         summonedCards.put(idx,peekCard(click));
         FieldG.boxes.get(idx).getChildren().add(Card.drawCard(peekCard(click),100));
+        cardInfo.put(idx,new Pair<>(false,true));
+        // setChosen(idx,this);
         removeHand(click);
+        FieldG.updateLand(this);
     }
     // public void removeHand(int x){
     //     if (hand.size() > x) hand.remove(x);
@@ -107,5 +120,15 @@ public class Player {
     public String getLand(Element e){
         // Pair<int,int> = element.get(e);
         return String.format("%d/%d",element.get(e).getKey(),element.get(e).getValue());
+    }
+
+    public void removeFieldCard(int idx){
+        summonedCards.remove(idx);
+        cardInfo.remove(idx);
+        FieldG.initField(this);
+    }
+
+    public boolean canBattle(int idx){
+        return cardInfo.get(idx).getKey();
     }
 }

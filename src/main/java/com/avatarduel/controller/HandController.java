@@ -23,11 +23,11 @@ public class HandController{
     public static void clickCard(BorderPane card, Player a, int idx){
         if(a.peekCard(idx) instanceof com.avatarduel.card.Character){
             if (State.gamePhase == Phase.MAIN){
-                if (a == State.p1){
+                if (a == State.p1 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((com.avatarduel.card.Character) a.peekCard(idx)).getCost()){
                     State.clickHand = idx;
                     // HandView.initP1();
                 }
-                else{
+                else if (a == State.p2 && a.element.get(a.peekCard(idx).getElement()).getKey() >= ((com.avatarduel.card.Character) a.peekCard(idx)).getCost()){
                     State.clickHand = idx + 10;
                     // HandView.initP2();
                 }

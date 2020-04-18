@@ -32,9 +32,9 @@ public class State{
             // System.out.printf("%d\n%d\n",p1.pDeck.isi.size(),p2.pDeck.isi.size());
         }catch(Exception E){
         }
-        for (int i =0 ; i < 20; i ++)
+        for (int i =0 ; i < 9; i ++)
             p1.pDeck.shuffle();
-        for (int i =0 ; i < 20; i ++)
+        for (int i =0 ; i < 22; i ++)
             p2.pDeck.shuffle();
         for (int i = 0; i < 6; i++){
             p1.takeCard();
@@ -53,6 +53,7 @@ public class State{
             gamePhase = Phase.MAIN;
         }
         else if (gamePhase == Phase.MAIN){
+            State.clickHand = -1;
             gamePhase = Phase.BATTLE;
         }
         else if (gamePhase == Phase.BATTLE){
@@ -65,7 +66,7 @@ public class State{
     }   
 
     public static boolean checkTurn(Player p){
-        return (p == p2 && turn%2 == 0) || (p == p1 && turn%2 == 1);
+        return p == p1 ? turn == 1 : turn == 2;
     }
 
     public static void endTurn(){
@@ -75,12 +76,15 @@ public class State{
         }
         else{
             p1.turnInit();
-
         }
+        State.clickField = -1;
+        State.clickHand = -1;
         gamePhase = Phase.MAIN;
         turn = turn % 2 + 1;
         HandView.initHand(State.p1);
         HandView.initHand(State.p2);
+        FieldG.initField(State.p1);
+        FieldG.initField(State.p2);
     }
 
 
