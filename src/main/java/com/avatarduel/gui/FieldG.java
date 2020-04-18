@@ -10,6 +10,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font; 
 import javafx.scene.text.FontPosture; 
 import javafx.scene.text.FontWeight;
+import javafx.scene.paint.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import com.avatarduel.card.Card;
 import com.avatarduel.card.Element;
@@ -36,6 +39,10 @@ public class FieldG{
     public static HBox cardDisp = new HBox();
 
     public static void gameView(){
+        Image back = new Image("com/wallppg.jpg");
+        ImageView bg = new ImageView(back);
+        BackgroundSize bSize = new BackgroundSize(1.0,1.0, true, true, false, false);
+
         HBox store = new HBox();
         store.setMinHeight(440);
         store.setAlignment(Pos.CENTER);
@@ -57,7 +64,7 @@ public class FieldG{
         BorderPane cardLayout2 = new BorderPane();
         cardLayout2.setMinWidth(250);
         cardLayout2.setMaxHeight(400);
-        cardLayout2.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        cardLayout2.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
 
         HBox store2 = new HBox();
         store2.setMinHeight(440);
@@ -102,7 +109,7 @@ public class FieldG{
         HBox spaces = new HBox();
         spaces.setMinHeight(100);
         spaces.setMaxWidth(750);
-        spaces.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        spaces.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
         spaces.getChildren().add(HandView.p2Hand);
         atas.setBottom(spaces);
         atas.setTop(FieldG.hpBar(State.p2,healthp2));
@@ -114,7 +121,7 @@ public class FieldG{
         HBox spaces2 = new HBox();
         spaces2.setMinHeight(100);
         spaces2.setMaxWidth(750);
-        spaces2.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        spaces2.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
         spaces2.getChildren().add(HandView.p1Hand);
         bawah.setTop(spaces2);
         bawah.setBottom(FieldG.hpBar(State.p1,healthp1));
@@ -145,6 +152,11 @@ public class FieldG{
         //grid bar
         // Main Layout
         BorderPane mainLayout = new BorderPane();
+        mainLayout.setBackground(new Background(new BackgroundImage(back,
+        BackgroundRepeat.NO_REPEAT,
+        BackgroundRepeat.NO_REPEAT,
+        BackgroundPosition.CENTER,
+        bSize)));
         mainLayout.setLeft(sidebar);
         mainLayout.setCenter(planeBox);
         RegView.Screen.getChildren().clear();
@@ -154,7 +166,7 @@ public class FieldG{
     public static HBox generateField(Player p){
         VBox fieldInside = new VBox();
         fieldInside.setAlignment(Pos.CENTER);
-        fieldInside.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        fieldInside.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
         fieldInside.getChildren().add(genBoxField(6,100,10,p));
         HBox spaces = new HBox();
         spaces.setMinSize(10,10);
@@ -182,7 +194,7 @@ public class FieldG{
             HBox b = new HBox();
             b.setMinSize(size,height);
             b.setAlignment(Pos.CENTER);
-            b.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+            b.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
             boxes.add(b);
             FieldController.setFieldClick(boxes.size()-1,p);
             boxField.getChildren().add(boxes.get(boxes.size()-1));
@@ -196,18 +208,26 @@ public class FieldG{
         int maxHp = 80;
         double curHP;
         BorderPane barPane = new BorderPane();
+        HBox plane = new HBox();
         // ProgressBar barHp = new ProgressBar();
         curHP = (double)pe.getHp()/maxHp;
         barHp.setProgress(curHP);
         barHp.setMinWidth(700);
         barHp.setMinHeight(10);
-        barPane.setCenter(barHp);
+        //barPane.setCenter(barHp);
+        barPane.setMinWidth(800);
         Text hp = new Text("HP");
         hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        hp.setFill(Color.WHITE);
         Text valHP = new Text(String.valueOf(pe.getHp()));
         valHP.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        barPane.setLeft(hp);
-        barPane.setRight(valHP);
+        valHP.setFill(Color.WHITE);
+        //barPane.setLeft(hp);
+        //barPane.setRight(valHP);
+        plane.getChildren().add(hp);
+        plane.getChildren().add(barHp);
+        plane.getChildren().add(valHP);
+        barPane.setCenter(plane);
         return barPane;
     }
     public static HBox uiDeck(Deck D){ //tinggal ditambahi parameter deck
@@ -217,12 +237,13 @@ public class FieldG{
         deckUI.setMaxHeight(100*1.618);
         deckUI.setMinWidth(100);
         deckUI.setAlignment(Pos.CENTER);
-        deckUI.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        deckUI.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
         BorderPane uiDck = new BorderPane();
         String str = String.format("%d/%d", D.getSize() ,D.kap);
-        Text hp = new Text(str);
-        hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        uiDck.setCenter(hp);
+        Text jmlh = new Text(str);
+        jmlh.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        jmlh.setFill(Color.WHITE);
+        uiDck.setCenter(jmlh);
         main.setBottom(uiDck);
         deckUI.getChildren().add(main);
         main.setCenter(Card.closedCard(100));
@@ -236,7 +257,7 @@ public class FieldG{
         landUI.setMinHeight(100*1.618);
         landUI.setMinWidth(100);
         landUI.setAlignment(Pos.CENTER);
-        landUI.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        landUI.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
         BorderPane uiland = new BorderPane();
         // String air = String.format("%d/%d");
         // String str = String.format("Ini Land");
@@ -246,8 +267,14 @@ public class FieldG{
         Text water = new Text("WATER " +p.getLand(Element.WATER));
         Text fire = new Text("FIRE " +p.getLand(Element.FIRE));
         Text earth = new Text("EARTH " +p.getLand(Element.EARTH));
-        // land.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        // uiland.setCenter(land);
+        air.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        air.setFill(Color.WHITE);
+        water.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        water.setFill(Color.WHITE);
+        fire.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        fire.setFill(Color.WHITE);
+        earth.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        earth.setFill(Color.WHITE);
         landUI.getChildren().add(air);
         landUI.getChildren().add(water);
         landUI.getChildren().add(fire);

@@ -31,9 +31,17 @@ public class HandView{
             BorderPane view = Card.drawCard(card,60);
             HandController.showOnHover(view,State.p1,i);
             HandController.setOnClicked(view,State.p1,i);
-            if (i == State.clickHand) view.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
-            if (State.turn % 2 == 1) p1Hand.getChildren().add(view);
-            else p1Hand.getChildren().add(Card.closedCard(60));
+            if (i == State.clickHand) {view.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));}
+            if (State.turn % 2 == 1) {
+                view.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+                p1Hand.getChildren().add(view);
+            }
+            else{
+                BorderPane handPane = new BorderPane();
+                handPane.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+                handPane.setCenter(Card.closedCard(60));
+                p1Hand.getChildren().add(handPane);
+            }
         }
     }
 
@@ -44,9 +52,19 @@ public class HandView{
             BorderPane view = Card.drawCard(card,60);
             HandController.showOnHover(view,State.p2,i);
             HandController.setOnClicked(view,State.p2,i);
-            if (i + 10 == State.clickHand) view.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
-            if (State.turn % 2 == 0) p2Hand.getChildren().add(view);
-            else p2Hand.getChildren().add(Card.closedCard(60));
+            if (i + 10 == State.clickHand) {
+                view.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+            }
+            if (State.turn % 2 == 0) {
+                view.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+                p2Hand.getChildren().add(view);
+            }
+            else{
+                BorderPane handPane = new BorderPane();
+                handPane.setBorder(new Border(new BorderStroke(Color.WHITE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
+                handPane.setCenter(Card.closedCard(60));
+                p2Hand.getChildren().add(handPane);
+            }
         }
     }
 }
