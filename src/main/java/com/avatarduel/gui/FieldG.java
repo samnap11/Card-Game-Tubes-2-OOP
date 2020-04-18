@@ -31,9 +31,15 @@ public class FieldG{
     
     public static ProgressBar healthp2 = new ProgressBar();
 
-    public static BorderPane cardOnDisplay = Card.drawCard(Card.getSuzy(),200);
-
     public static HBox cardDisp = new HBox();
+
+    public static VBox land1 = new VBox();
+
+    public static VBox land2 = new VBox();
+
+    public static HBox uiDck1 = new HBox();
+
+    public static HBox uiDck2 = new HBox();
 
     public static void gameView(){
         HBox store = new HBox();
@@ -50,7 +56,7 @@ public class FieldG{
         // card.setMinWidth(200);
         // card.setAlignment(Pos.CENTER);
         // card.getChildren().add(cardOnDisplay);
-        cardDisp.getChildren().add(cardOnDisplay);
+        cardDisp.getChildren().add(Card.drawCard(Card.getSuzy(),200));
         store.getChildren().add(cardDisp);
         // card.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));   
 
@@ -64,15 +70,17 @@ public class FieldG{
         store2.setAlignment(Pos.CENTER);
         store2.getChildren().add(cardLayout2);
         
+        initLandUI();
+
 
         // Left Layout
         //land layout
         BorderPane landp1 = new BorderPane();
         // landp1.setBottom(FieldG.uiLand());
-        landp1.setCenter(FieldG.uiLand(State.p2));
+        landp1.setCenter(land1);
         BorderPane landp2 = new BorderPane ();
         // landp2.setBottom(FieldG.uiLand());
-        landp2.setCenter(FieldG.uiLand(State.p1));
+        landp2.setCenter(land2);
         // BorderPane landonfield = new BorderPane();
         // landonfield.setBottom(landp2);
         // landonfield.setTop(landp1);
@@ -80,9 +88,9 @@ public class FieldG{
         HBox padLand = new HBox();
         padLand.setMinHeight(30);
         landLayout.setAlignment(Pos.CENTER);
-        landLayout.getChildren().add(landp1);
-        landLayout.getChildren().add(padLand);
         landLayout.getChildren().add(landp2);
+        landLayout.getChildren().add(padLand);
+        landLayout.getChildren().add(landp1);
         //lef layout in main
         BorderPane sidebar = new BorderPane();
         sidebar.setMinWidth(290);
@@ -166,7 +174,7 @@ public class FieldG{
         field.setAlignment(Pos.CENTER);
         field.getChildren().add(fieldInside);
         BorderPane gridDeck = new BorderPane();
-        gridDeck.setCenter(FieldG.uiDeck(p.pDeck));
+        gridDeck.setCenter(FieldG.uiDeck(p));
         field.getChildren().add(gridDeck);
 
         return field;
@@ -185,6 +193,7 @@ public class FieldG{
             b.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
             boxes.add(b);
             FieldController.setFieldClick(boxes.size()-1,p);
+            FieldController.setFieldHover(boxes.size()-1,p);
             boxField.getChildren().add(boxes.get(boxes.size()-1));
                 HBox spaces = new HBox();
                 spaces.setMinSize(10,10);
@@ -210,19 +219,22 @@ public class FieldG{
         barPane.setRight(valHP);
         return barPane;
     }
-    public static HBox uiDeck(Deck D){ //tinggal ditambahi parameter deck
+    public static HBox uiDeck(Player P){ //tinggal ditambahi parameter deck
         BorderPane main = new BorderPane();
         // main.getChildren().add(Card.closedCard(100));
+        HBox uiDck = P == State.p1 ? uiDck1 : uiDck2;
         HBox deckUI = new HBox();
         deckUI.setMaxHeight(100*1.618);
         deckUI.setMinWidth(100);
         deckUI.setAlignment(Pos.CENTER);
         deckUI.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
-        BorderPane uiDck = new BorderPane();
-        String str = String.format("%d/%d", D.getSize() ,D.kap);
+        // HBox uiDck = new HBox();
+        String str = String.format("%d/%d", P.pDeck.getSize() ,P.pDeck.kap);
         Text hp = new Text(str);
         hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        uiDck.setCenter(hp);
+        uiDck.setAlignment(Pos.CENTER);
+        uiDck.getChildren().clear();
+        uiDck.getChildren().add(hp);
         main.setBottom(uiDck);
         deckUI.getChildren().add(main);
         main.setCenter(Card.closedCard(100));
@@ -231,35 +243,48 @@ public class FieldG{
         return deckUI;
     }
 
-    public static VBox uiLand(Player p){ //tinggal ditambahin parameter land mungkin
-        VBox landUI = new VBox();
-        landUI.setMinHeight(100*1.618);
-        landUI.setMinWidth(100);
-        landUI.setAlignment(Pos.CENTER);
-        landUI.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
-        BorderPane uiland = new BorderPane();
-        // String air = String.format("%d/%d");
-        // String str = String.format("Ini Land");
-        // String str = String.format("Ini Land");
-        // String str = String.format("Ini Land");
+    public static void updateDeckSize(Player p){
+        HBox uiDck = p == State.p1 ? uiDck1 : uiDck2;
+        uiDck.getChildren().clear();
+        String str = String.format("%d/%d", p.pDeck.getSize() ,p.pDeck.kap);
+        Text hp = new Text(str);
+        hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        uiDck.getChildren().add(hp);
+    }
+
+    public static void initLandUI(){
+        land1.setMinHeight(100*1.618);
+        land1.setMinWidth(100);
+        land1.setAlignment(Pos.CENTER);
+        land1.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        updateLand(State.p1);
+        
+        land2.setMinHeight(100*1.618);
+        land2.setMinWidth(100);
+        land2.setAlignment(Pos.CENTER);
+        land2.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
+        updateLand(State.p2);
+
+    }
+
+    public static void updateLand(Player p){ //tinggal ditambahin parameter land mungkin
         Text air = new Text("AIR " + p.getLand(Element.AIR));
         Text water = new Text("WATER " +p.getLand(Element.WATER));
         Text fire = new Text("FIRE " +p.getLand(Element.FIRE));
         Text earth = new Text("EARTH " +p.getLand(Element.EARTH));
-        // land.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        // uiland.setCenter(land);
-        landUI.getChildren().add(air);
-        landUI.getChildren().add(water);
-        landUI.getChildren().add(fire);
-        landUI.getChildren().add(earth);
-        return landUI;
 
+        VBox land = p == State.p1 ? land1 : land2;
+     
+        land.getChildren().clear();
+        land.getChildren().add(air);
+        land.getChildren().add(water);
+        land.getChildren().add(fire);
+        land.getChildren().add(earth);
     }
     
     public static void changeDisplay(Card card){
-        cardOnDisplay = Card.drawCard(card,200);
         cardDisp.getChildren().clear();
-        cardDisp.getChildren().add(cardOnDisplay);
+        cardDisp.getChildren().add(Card.drawCard(card,200));
 
         // gameView();
     }

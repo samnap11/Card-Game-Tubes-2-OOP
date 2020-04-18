@@ -15,10 +15,10 @@ public class CardLoader {
     private static final String SKILL_CSV_FILE_PATH = "com/avatarduel/card/data/skill.csv";
 
     public CardLoader() {
-        ret = new ArrayList<>();
     }
     public ArrayList<Card> loadCards() throws IOException, URISyntaxException {
         // ret = new ArrayList<>();
+        ret = new ArrayList<>();
         // ret.clear();
         loadLands();
         loadCharacters();

@@ -12,10 +12,10 @@ public class Deck {
         kap = 60;
 
     }
-    public Deck( String usr){
+    public Deck(int kap){
         // user = usr;
         isi = new Stack<>();
-        
+        this.kap = kap;
     }
 
     public int getSize(){
@@ -53,7 +53,7 @@ public class Deck {
         //     isi.push(card[i]);
         // }
         for (int i = 0; i < Cards.size() && i < kap; i++){
-            System.out.printf("Hai\n");
+            // System.out.printf("Hai\n");
             isi.push(Cards.get(i));
         }
     }

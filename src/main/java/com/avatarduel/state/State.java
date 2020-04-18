@@ -5,6 +5,7 @@ import com.avatarduel.player.Player;
 import com.avatarduel.gui.Buttons;
 import com.avatarduel.card.CardLoader;
 import com.avatarduel.gui.*;
+import com.avatarduel.deck.Deck;
 
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
@@ -19,20 +20,23 @@ public class State{
 
     public static void init(){
         CardLoader a = new CardLoader();
+        // Deck all = new Deck(300);
+        
         p1 = new Player();
         p2 = new Player();
         try{
+            // all.inputDeck(a.loadCards());
             // System.out.println("Hai\n");
             p1.fillDeck(a.loadCards());
             p2.fillDeck(a.loadCards());
-            System.out.printf("%d\n%d\n",p1.pDeck.isi.size(),p2.pDeck.isi.size());
+            // System.out.printf("%d\n%d\n",p1.pDeck.isi.size(),p2.pDeck.isi.size());
         }catch(Exception E){
         }
-        for (int i =0 ; i < 5; i ++)
+        for (int i =0 ; i < 20; i ++)
             p1.pDeck.shuffle();
-        for (int i =0 ; i < 10; i ++)
+        for (int i =0 ; i < 20; i ++)
             p2.pDeck.shuffle();
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < 6; i++){
             p1.takeCard();
             p2.takeCard();
         }
@@ -58,28 +62,25 @@ public class State{
             gamePhase = Phase.MAIN;
         }
         System.out.println(State.gamePhase);
+    }   
+
+    public static boolean checkTurn(Player p){
+        return (p == p2 && turn%2 == 0) || (p == p1 && turn%2 == 1);
     }
 
     public static void endTurn(){
         Buttons.init();
-        // System.out.println(State.turn);a
         if (turn % 2 == 1){
-            // System.out.println("halo");
-            // System.out.printf("%d\n",p2.pDeck.isi.size());
-            if (p2.sizeHand() < 10)
-                p2.takeCard();
+            p2.turnInit();
         }
         else{
-            if (p1.sizeHand() < 10)
-                p1.takeCard();
+            p1.turnInit();
 
         }
-        // nextPhase();
         gamePhase = Phase.MAIN;
         turn = turn % 2 + 1;
-        HandView.initP1();
-        HandView.initP2();
-        // FieldG.gameView();
+        HandView.initHand(State.p1);
+        HandView.initHand(State.p2);
     }
 
 

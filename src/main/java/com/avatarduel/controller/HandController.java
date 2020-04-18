@@ -21,16 +21,23 @@ public class HandController{
     }
 
     public static void clickCard(BorderPane card, Player a, int idx){
-        if (State.gamePhase == Phase.MAIN){
-            if (a == State.p1){
-                State.clickHand = idx;
-                HandView.initP1();
-            }
-            else{
-                State.clickHand = idx + 10;
-                HandView.initP2();
-            }
-        }   
+        if(a.peekCard(idx) instanceof com.avatarduel.card.Character){
+            if (State.gamePhase == Phase.MAIN){
+                if (a == State.p1){
+                    State.clickHand = idx;
+                    // HandView.initP1();
+                }
+                else{
+                    State.clickHand = idx + 10;
+                    // HandView.initP2();
+                }
+                HandView.initHand(a);
+            }   
+        }
+        else if (a.peekCard(idx) instanceof com.avatarduel.card.Land){
+            ((Land) a.peekCard(idx)).activate(a);
+            a.removeHand(idx);
+        }
         // card.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
     }
 }
