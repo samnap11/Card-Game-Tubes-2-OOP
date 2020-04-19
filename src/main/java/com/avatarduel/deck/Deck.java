@@ -3,7 +3,11 @@ import java.util.*;
 
 import com.avatarduel.card.Card;
 import java.util.Collections;
-
+/**
+ * Deck is set of card that is used in game
+ * 
+ * @author Fatkhan
+ */
 public class Deck {
     public Stack<Card> isi;
     public int kap;
@@ -19,7 +23,11 @@ public class Deck {
         isi = new Stack<>();
         this.kap = kap;
     }
-    //return update size in deck
+    
+    /** 
+     * return update size in deck
+     * @return int
+     */
     public int getSize(){
         return isi.size();
     }
@@ -35,7 +43,12 @@ public class Deck {
             isi.push(j);
         }
     }
-    //input card to deck 
+    
+    /** 
+     * input card to deck
+     * @param Cards
+     */
+     
     public void inputDeck(ArrayList<Card> Cards){
         for (int i = 0; i < Cards.size() && i < kap; i++){
             // System.out.printf("Hai\n");
@@ -43,7 +56,11 @@ public class Deck {
         }
     }
 
-    //take one card from deck
+    
+    /** 
+     * take one card from deck
+     * @return Card
+     */
     public Card Draw(){
         return isi.pop();
     }
