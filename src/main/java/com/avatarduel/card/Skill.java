@@ -7,7 +7,7 @@ import com.avatarduel.player.Player;
 /**
  * Skill card which provides certain effect to a targeted character card
  * This card is a child class of Card
- * @author Samuel 
+ * @author Samuel
  */
 public abstract class Skill extends Card implements HasCost{
     protected int power_cost;

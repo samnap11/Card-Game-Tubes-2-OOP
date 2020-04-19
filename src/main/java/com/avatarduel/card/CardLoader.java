@@ -31,8 +31,8 @@ public class CardLoader {
     /**
      * Load all of the cards to an arraylist
      * @return the list of all the cards which had been loaded
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public ArrayList<Card> loadCards() throws IOException, URISyntaxException {
         ret = new ArrayList<>();
@@ -47,8 +47,8 @@ public class CardLoader {
 
     /**
      * Load land cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public void loadLands() throws IOException, URISyntaxException {
         try{
@@ -68,8 +68,8 @@ public class CardLoader {
 
     /**
      * Load character cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public void loadCharacters() throws IOException, URISyntaxException {
         File characterCSVFile = new File(CHARACTER_CSV_FILE_PATH);
@@ -84,8 +84,8 @@ public class CardLoader {
 
     /**
      * Load skill cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public void loadSkills() throws IOException, URISyntaxException {
         loadAura();
@@ -95,8 +95,8 @@ public class CardLoader {
 
     /**
      * Load aura cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public void loadAura() throws IOException, URISyntaxException {
         File auraCSVFile = new File(AURA_CSV_FILE_PATH);
@@ -111,8 +111,8 @@ public class CardLoader {
 
     /**
      * Load power up cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public  void loadPowerUp() throws IOException, URISyntaxException {
         File powerUpCSVFile = new File(POWERUP_CSV_FILE_PATH);
@@ -127,8 +127,8 @@ public class CardLoader {
 
     /**
      * Load destroy cards to the arraylist
-     * @throws IOException
-     * @throws URISyntaxException
+     * @throws IOException exception when reading the csv file
+     * @throws URISyntaxException exception when converting the file to URI
      */
     public  void loadDestroy() throws IOException, URISyntaxException {
         File destroyCSVFile = new File(DESTROY_CSV_FILE_PATH);

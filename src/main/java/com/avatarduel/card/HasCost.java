@@ -7,7 +7,7 @@ package com.avatarduel.card;
 public interface HasCost{
     /**
      * Getter for the cost to summon the card
-     * @return
+     * @return the cost to summon the card
      */
     public int getCost();
 }
