@@ -17,8 +17,19 @@ public class CardLoader {
     private static final String DESTROY_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/destroy.csv";
     private static final String POWERUP_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/powerup.csv";
 
+    /**
+     * Create an arraylist for the cards which will be loaded
+     */
     public CardLoader() {
+        ret = new ArrayList<>();
     }
+
+    /**
+     * Load all of the cards to an arraylist
+     * @return the list of all the cards which had been loaded
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public ArrayList<Card> loadCards() throws IOException, URISyntaxException {
         ret = new ArrayList<>();
         loadLands();
@@ -29,6 +40,12 @@ public class CardLoader {
         Collections.shuffle(ret);
         return ret;
     }
+
+    /**
+     * Load land cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public void loadLands() throws IOException, URISyntaxException {
         try{
             File landCSVFile = new File(LAND_CSV_FILE_PATH);
@@ -44,6 +61,12 @@ public class CardLoader {
             System.out.println(E);
         }
     }
+
+    /**
+     * Load character cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public void loadCharacters() throws IOException, URISyntaxException {
         File characterCSVFile = new File(CHARACTER_CSV_FILE_PATH);
         CSVReader characterReader = new CSVReader(characterCSVFile,"\t");
@@ -54,11 +77,23 @@ public class CardLoader {
             ret.add(character);
         }
     }
+
+    /**
+     * Load skill cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public void loadSkills() throws IOException, URISyntaxException {
         loadAura();
         loadPowerUp();
         loadDestroy();
     }
+
+    /**
+     * Load aura cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public void loadAura() throws IOException, URISyntaxException {
         File auraCSVFile = new File(AURA_CSV_FILE_PATH);
         CSVReader auraReader = new CSVReader(auraCSVFile,"\t");
@@ -69,6 +104,12 @@ public class CardLoader {
             ret.add(aura);
         }
     }
+
+    /**
+     * Load power up cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public  void loadPowerUp() throws IOException, URISyntaxException {
         File powerUpCSVFile = new File(POWERUP_CSV_FILE_PATH);
         CSVReader powerUpReader = new CSVReader(powerUpCSVFile,"\t");
@@ -79,6 +120,12 @@ public class CardLoader {
             ret.add(powerUp);
         }
     }
+
+    /**
+     * Load destroy cards to the arraylist
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public  void loadDestroy() throws IOException, URISyntaxException {
         File destroyCSVFile = new File(DESTROY_CSV_FILE_PATH);
         CSVReader destroyReader = new CSVReader(destroyCSVFile,"\t");

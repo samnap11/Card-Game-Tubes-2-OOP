@@ -26,15 +26,15 @@ public class AvatarDuel extends Application {
   // Stage window;
   // Scene one,two;
 
-  public void loadCards() throws IOException, URISyntaxException {
-    File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
-    CSVReader landReader = new CSVReader(landCSVFile, "\t");
-    landReader.setSkipHeader(true);
-    List<String[]> landRows = landReader.read();
-    for (String[] row : landRows) {
-      // Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
-    }
-  }
+//  public void loadCards() throws IOException, URISyntaxException {
+//    File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
+//    CSVReader landReader = new CSVReader(landCSVFile, "\t");
+//    landReader.setSkipHeader(true);
+//    List<String[]> landRows = landReader.read();
+//    for (String[] row : landRows) {
+//      // Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
+//    }
+//  }
 
   @Override
   public void start(Stage stage) throws IOException {
