@@ -4,10 +4,23 @@ import com.avatarduel.player.Player;
 import com.avatarduel.state.State;
 
 public class Destroy extends Skill {
+    /**
+     * Constructor of the destroy card
+     * @param name the name of the destroy card
+     * @param description the description text of the destroy card
+     * @param element the element of the destroy card
+     * @param img the imagepath of the destroy card
+     * @param power_cost the cost to summon the destroy card
+     */
     public Destroy(String name, String description, Element element,String img, int power_cost) {
         super(name, description, element,img, power_cost);
     }
 
+    /**
+     * Destroy a card
+     * @param p the player which has the targeted card
+     * @param idx the index of the targeted card on the player p field
+     */
     @Override
     public void effect(Player p,int idx) {
         // summonedCharacter.setDestroyed(true);
@@ -21,11 +34,20 @@ public class Destroy extends Skill {
         p.removeFieldCard(idx);
     }
 
+    /**
+     * Taking away the effect of the card
+     * @param p the player which has the targeted card
+     * @param idx the index of the targeted card on the player p field
+     */
     @Override
     public void deeffect(Player p,int idx) {
         
     }
 
+    /**
+     * Getter for the details of the card
+     * @return the details of the card
+     */
     public String getDetails(){
         return String.format("Destroy %s COST %d",element,getCost());
     }
