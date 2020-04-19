@@ -3,6 +3,7 @@ plugins {
 }
 
 apply plugin: 'application'
+apply plugin: 'java-library-distribution'
 
 mainClassName = 'com.avatarduel.AvatarDuel'
 
