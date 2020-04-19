@@ -1,10 +1,10 @@
-## Avatar Card Game
+# Avatar Card Game
 
 ## Description
 
 A simple game card based on the Avatar universe, using javafx for the interface, and wrapped by gradle.
 
-## Struktur kode
+## Code structure
 ```
 root
 └── src/main
@@ -50,10 +50,32 @@ root
 
 
 
-## How to start the game
-0. 'gradlew' untuk memastikan gradle terpasang
-1. 'gradlew run' game akan mulai
+## How to build the game
+To build the game, simply type this in the terminal (for Linux users) or command prompt (for Windows users)
 
+**For Linux users**
+>./gradlew build
 
-## Tambahan
-- Dokumentasi tersedia di build/documentations/index.html setelah command 'gradlew build'
+**For Windows users**
+>gradlew build
+
+## How to run the game
+To run the game, simply type this in the terminal (for Linux users) or command prompt (for Windows users)
+
+**For Linux users**
+>./gradlew run
+
+**For Windows users**
+>gradlew run
+
+## How to get the documentation for the source code
+Simply type this in the terminal (for Linux users) or command prompt (for Windows users)
+
+**For Linux users**
+>./gradlew avatarDocs
+
+**For Windows users**
+>gradlew avatarDocs
+
+After that, you can find the documentation in **build/docs/javadoc/index.html**.
+After you open it in your browser, you can go to the documentation of any packages or classes which are listed there.
