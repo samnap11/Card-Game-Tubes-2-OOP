@@ -76,7 +76,7 @@ public class RegView{
         Screen.getChildren().add(cek);
         start.setOnAction( e->{
             Screen.getChildren().remove(screen);
-            FieldG.gameView();
+            MainView.gameView();
         }
         );
         // FieldG.gameView();

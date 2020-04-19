@@ -13,7 +13,7 @@ import com.avatarduel.state.*;
 
 public class HandController{
     public static void showOnHover(BorderPane card,Player a, int idx){
-        card.setOnMouseEntered(e -> FieldG.changeDisplay(a.peekCard(idx)));
+        card.setOnMouseEntered(e -> CardOnDisplay.changeDisplay(a.peekCard(idx)));
     }   
 
     public static void setOnClicked(BorderPane card, Player a, int idx){

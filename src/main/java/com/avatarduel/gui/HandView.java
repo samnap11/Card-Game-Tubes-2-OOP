@@ -40,17 +40,4 @@ public class HandView{
             else hand.getChildren().add(Card.closedCard(60));
         }
     }
-
-    // public static void initP2(){
-    //     p2Hand.getChildren().clear();
-    //     for (int i = 0; i < State.p2.sizeHand(); i ++){
-    //         Card card = State.p2.peekCard(i);
-    //         BorderPane view = Card.drawCard(card,60);
-    //         HandController.showOnHover(view,State.p2,i);
-    //         HandController.setOnClicked(view,State.p2,i);
-    //         if (i + 10 == State.clickHand) view.setBorder(new Border(new BorderStroke(Color.LIGHTBLUE,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
-    //         if (State.turn % 2 == 0) p2Hand.getChildren().add(view);
-    //         else p2Hand.getChildren().add(Card.closedCard(60));
-    //     }
-    // }
 }

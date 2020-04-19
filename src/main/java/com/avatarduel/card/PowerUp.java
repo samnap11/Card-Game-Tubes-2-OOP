@@ -11,12 +11,14 @@ public class PowerUp extends Skill {
     public void effect(Player p,int idx) {
         // summonedCharacter.setPoweredUp(true);
         p.powerUp.add(idx);
+        setTarget(idx);
     }
 
-    // @Override
-    // public void deeffect(SummonedCharacter summonedCharacter) {
-    //     // summonedCharacter.setPoweredUp(false);
-    // }
+    @Override
+    public void deeffect(Player p,int idx) {
+        p.powerUp.remove(idx);
+        setTarget(-1);
+    }
 
     public String getDetails(){
         return String.format("PU %s COST %d",element,power_cost);

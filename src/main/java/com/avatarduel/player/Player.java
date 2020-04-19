@@ -56,7 +56,7 @@ public class Player {
     public void takeCard(){
         Card now = pDeck.Draw();
         hand.add(now);
-        FieldG.updateDeckSize(this);
+        FieldSide.updateDeckSize(this);
     }
 
     public void fillDeck(ArrayList<Card> a){
@@ -106,11 +106,11 @@ public class Player {
         int click = this == State.p1 ? State.clickHand : State.clickHand - 10;
         element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((com.avatarduel.card.Character) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
         summonedCards.put(idx,peekCard(click));
-        FieldG.boxes.get(idx).getChildren().add(Card.drawCard(peekCard(click),100));
+        FieldView.boxes.get(idx).getChildren().add(Card.drawCard(peekCard(click),100));
         cardInfo.put(idx,new Pair<>(false,true));
         // setChosen(idx,this);
         removeHand(click);
-        FieldG.updateLand(this);
+        FieldSide.updateLand(this);
     }
     
     public void useSkill(int idx){
@@ -119,18 +119,19 @@ public class Player {
         ((Skill) peekCard(click)).effect(p,idx);
         element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((HasCost) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
         int x = this == State.p1 ? 18 : 0;
+        if (!(peekCard(click) instanceof Destroy))
         for (int i = x; i < x+6; i ++){
             if (summonedCards.get(i) == null){
                 System.out.printf("%d\n%s\n",i,peekCard(click).getDetails());
                 summonedCards.put(i,peekCard(click));
-                FieldG.boxes.get(i).getChildren().add(Card.drawCard(peekCard(click),100));
+                FieldView.boxes.get(i).getChildren().add(Card.drawCard(peekCard(click),100));
                 cardInfo.put(i,new Pair<>(true,true));
                 break;
             }
         }
         State.clickHand = -1;
         removeHand(click);
-        FieldG.initField(this);
+        FieldView.initField(this);
     }
 
     public void removeHandCard(Card cx){
@@ -145,7 +146,27 @@ public class Player {
     public void removeFieldCard(int idx){
         summonedCards.remove(idx);
         cardInfo.remove(idx);
-        FieldG.initField(this);
+        destroyUsedAt(idx);
+        FieldView.initField(this);
+    }
+
+    public void destroyUsedAt(int idx){
+        for (int i : State.p1.summonedCards.keySet()){
+            if (State.p1.summonedCards.get(i) instanceof Skill){
+                if (((Skill) State.p1.summonedCards.get(i)).getTarget() == idx || ((Skill) State.p1.summonedCards.get(i)).getTarget() == -1){
+                    State.p1.summonedCards.put(i,null);
+                    State.p1.cardInfo.remove(i);
+                }
+            }
+        }
+        for (int i : State.p2.summonedCards.keySet()){
+            if (State.p2.summonedCards.get(i) instanceof Skill){
+                if (((Skill) State.p2.summonedCards.get(i)).getTarget() == idx || ((Skill) State.p2.summonedCards.get(i)).getTarget() == -1){
+                    State.p2.summonedCards.put(i,null);
+                    State.p2.cardInfo.remove(i);
+                }
+            }
+        }
     }
 
     public boolean canBattle(int idx){

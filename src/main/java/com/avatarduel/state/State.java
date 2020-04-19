@@ -83,8 +83,8 @@ public class State{
         turn = turn % 2 + 1;
         HandView.initHand(State.p1);
         HandView.initHand(State.p2);
-        FieldG.initField(State.p1);
-        FieldG.initField(State.p2);
+        FieldView.initField(State.p1);
+        FieldView.initField(State.p2);
     }
 
 

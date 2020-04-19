@@ -28,7 +28,7 @@ public class Land extends Card {
 
     public void activate(Player p){
         p.addElement(element,power_provided);
-        FieldG.updateLand(p);
+        FieldSide.updateLand(p);
     }
 
     public String getDetails(){

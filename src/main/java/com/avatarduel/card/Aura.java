@@ -31,10 +31,17 @@ public class Aura extends Skill {
 
     public String getDetails(){
         return String.format("Aura %s COST %d\n ATT %d DEF %d",element,getCost(),attack_change,defense_change);
-    }
+    } 
 
     @Override
     public void effect(Player p,int idx) {
         ((com.avatarduel.card.Character) p.summonedCards.get(idx)).giveBonus(attack_change,defense_change);
+        setTarget(idx);
+    }
+
+    @Override
+    public void deeffect(Player p, int idx){
+        ((Character) p.summonedCards.get(idx)).takeBonus(attack_change,defense_change);
+        setTarget(-1);
     }
 }

@@ -4,7 +4,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.geometry.Pos;
 
-import com.avatarduel.gui.FieldG;
+// import com.avatarduel.gui.FieldG;
 import com.avatarduel.state.State;
 import com.avatarduel.state.Phase;
 

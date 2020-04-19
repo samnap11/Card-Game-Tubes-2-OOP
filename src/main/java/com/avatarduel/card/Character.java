@@ -3,7 +3,7 @@ package com.avatarduel.card;
 
 // import com.avatarduel.field.Field;
 import com.avatarduel.player.Player;
-import com.avatarduel.gui.FieldG;
+import com.avatarduel.gui.*;
 import javafx.util.Pair;
 
 public class Character extends Card implements HasCost{
@@ -77,24 +77,28 @@ public class Character extends Card implements HasCost{
         p1.cardInfo.put(attack, new Pair<>(true,true));
         if (defense == -1){
             p2.setHp(p2.getHp()-((Character)p1.summonedCards.get(attack)).getAttack());
-            FieldG.updateHp(p2);
+            HealthView.updateHp(p2);
             return;
         }
         int attackVal = ((Character)p1.summonedCards.get(attack)).getAttack();
         int defenderVal = p2.cardInfo.get(defense).getValue() ? ((Character) p2.summonedCards.get(defense)).getAttack() : ((Character) p2.summonedCards.get(defense)).getDefense();
         int calc = attackVal - defenderVal;
         if (calc > 0){
-            p2.removeFieldCard(defense);
-            if (p2.cardInfo.get(defense).getValue())
+            // System.out.println(p2.cardInfo.get(defense).getValue());
+            // System.out.println(p1.powerUp.get(attack));
+            if (p2.cardInfo.get(defense).getValue() || p1.powerUp.contains(attack)){
+                System.out.printf("defense %d\n",defense);
                 p2.setHp(p2.getHp() - calc);
-            FieldG.updateHp(p2);
+            }
+            p2.removeFieldCard(defense);
+            HealthView.updateHp(p2);
         }else if (calc == 0){
             p2.removeFieldCard(defense);
             p1.removeFieldCard(attack);
         }else{
             p1.removeFieldCard(attack);
             p1.setHp(p1.getHp() + calc);
-            FieldG.updateHp(p1);
+            HealthView.updateHp(p1);
         }
     }
 }
