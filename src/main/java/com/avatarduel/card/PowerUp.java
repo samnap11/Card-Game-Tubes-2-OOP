@@ -10,13 +10,13 @@ public class PowerUp extends Skill {
     @Override
     public void effect(Player p,int idx) {
         // summonedCharacter.setPoweredUp(true);
-        p.powerUp.add(idx);
+        p.getPowerUp().add(idx);
         setTarget(idx);
     }
 
     @Override
     public void deeffect(Player p,int idx) {
-        p.powerUp.remove(idx);
+        p.getPowerUp().remove(idx);
         setTarget(-1);
     }
 

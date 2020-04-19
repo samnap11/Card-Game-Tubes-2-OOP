@@ -35,13 +35,13 @@ public class Aura extends Skill {
 
     @Override
     public void effect(Player p,int idx) {
-        ((com.avatarduel.card.Character) p.summonedCards.get(idx)).giveBonus(attack_change,defense_change);
+        ((com.avatarduel.card.Character) p.getSummonedCards().get(idx)).giveBonus(attack_change,defense_change);
         setTarget(idx);
     }
 
     @Override
     public void deeffect(Player p, int idx){
-        ((Character) p.summonedCards.get(idx)).takeBonus(attack_change,defense_change);
+        ((Character) p.getSummonedCards().get(idx)).takeBonus(attack_change,defense_change);
         setTarget(-1);
     }
 }

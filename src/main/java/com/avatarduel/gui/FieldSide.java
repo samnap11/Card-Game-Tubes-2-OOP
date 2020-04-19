@@ -23,46 +23,64 @@ import com.avatarduel.gui.Buttons;
 import com.avatarduel.gui.HandView;
 import com.avatarduel.controller.*;
 
+/**
+ * FieldSide is responsible for holding the instance of Lands and Decks of each player
+ * 
+ * @author saya
+ */
 public class FieldSide{
+
     public static VBox land1 = new VBox();
 
     public static VBox land2 = new VBox();
 
-    public static HBox uiDck1 = new HBox();
+    public static HBox deckP1 = new HBox();
 
-    public static HBox uiDck2 = new HBox();
+    public static HBox deckP2 = new HBox();
 
-    
+    /**
+     * instanciate the deck gui
+     * @param P Owner of deck
+     * @return The box containing the deck
+     */
     public static HBox uiDeck(Player P){ //tinggal ditambahi parameter deck
         BorderPane main = new BorderPane();
-        HBox uiDck = P == State.p1 ? uiDck1 : uiDck2;
+        HBox deckP = P == State.p1 ? deckP1 : deckP2;
         HBox deckUI = new HBox();
         deckUI.setMaxHeight(100*1.618);
         deckUI.setMinWidth(100);
         deckUI.setAlignment(Pos.CENTER);
         deckUI.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID,null, new BorderWidths(1))));
-        // HBox uiDck = new HBox();
-        String str = String.format("%d/%d", P.pDeck.getSize() ,P.pDeck.kap);
+        // HBox deckP = new HBox();
+        String str = String.format("%d/%d", P.getDeck().getSize() ,P.getDeck().kap);
         Text hp = new Text(str);
         hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        uiDck.setAlignment(Pos.CENTER);
-        uiDck.getChildren().clear();
-        uiDck.getChildren().add(hp);
-        main.setBottom(uiDck);
+        deckP.setAlignment(Pos.CENTER);
+        deckP.getChildren().clear();
+        deckP.getChildren().add(hp);
+        main.setBottom(deckP);
         deckUI.getChildren().add(main);
         main.setCenter(Card.closedCard(100));
         return deckUI;
     }
 
+    /**
+     * Update the numbers of deck card left viewed
+     * @param p owner of deck
+     */
     public static void updateDeckSize(Player p){
-        HBox uiDck = p == State.p1 ? uiDck1 : uiDck2;
-        uiDck.getChildren().clear();
-        String str = String.format("%d/%d", p.pDeck.getSize() ,p.pDeck.kap);
+        HBox deckP = p == State.p1 ? deckP1 : deckP2;
+        deckP.getChildren().clear();
+        String str = String.format("%d/%d", p.getDeck().getSize() ,p.getDeck().kap);
         Text hp = new Text(str);
         hp.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        uiDck.getChildren().add(hp);
+        deckP.getChildren().add(hp);
     }
 
+    /**
+     * Initiate ui for land of both players
+     * 
+     */
     public static void initLandUI(){
         land1.setMinHeight(100*1.618);
         land1.setMinWidth(100);
@@ -78,6 +96,10 @@ public class FieldSide{
 
     }
 
+    /**
+     * Update lands when cards are used, or they are refreshed on turn starts
+     * @param p Land owner
+     */
     public static void updateLand(Player p){ //tinggal ditambahin parameter land mungkin
         Text air = new Text("AIR " + p.getLand(Element.AIR));
         Text water = new Text("WATER " +p.getLand(Element.WATER));

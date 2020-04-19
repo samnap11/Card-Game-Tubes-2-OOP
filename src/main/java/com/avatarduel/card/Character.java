@@ -18,7 +18,8 @@ public class Character extends Card implements HasCost{
         this.attack = attack;
         this.defense = defense;
         this.power_cost = power_cost;
-    
+        this.attackBonus = 0;
+        this.defenseBonus = 0;
     }
 
     public Character(){
@@ -74,19 +75,17 @@ public class Character extends Card implements HasCost{
     }
 
     public static void Battle(Player p1, Player p2, int attack, int defense){
-        p1.cardInfo.put(attack, new Pair<>(true,true));
+        p1.getCardInfo().put(attack, new Pair<>(true,true));
         if (defense == -1){
-            p2.setHp(p2.getHp()-((Character)p1.summonedCards.get(attack)).getAttack());
+            p2.setHp(p2.getHp()-((Character)p1.getSummonedCards().get(attack)).getAttack());
             HealthView.updateHp(p2);
             return;
         }
-        int attackVal = ((Character)p1.summonedCards.get(attack)).getAttack();
-        int defenderVal = p2.cardInfo.get(defense).getValue() ? ((Character) p2.summonedCards.get(defense)).getAttack() : ((Character) p2.summonedCards.get(defense)).getDefense();
+        int attackVal = ((Character)p1.getSummonedCards().get(attack)).getAttack();
+        int defenderVal = p2.getCardInfo().get(defense).getValue() ? ((Character) p2.getSummonedCards().get(defense)).getAttack() : ((Character) p2.getSummonedCards().get(defense)).getDefense();
         int calc = attackVal - defenderVal;
         if (calc > 0){
-            // System.out.println(p2.cardInfo.get(defense).getValue());
-            // System.out.println(p1.powerUp.get(attack));
-            if (p2.cardInfo.get(defense).getValue() || p1.powerUp.contains(attack)){
+            if (p2.getCardInfo().get(defense).getValue() || p1.getPowerUp().contains(attack)){
                 System.out.printf("defense %d\n",defense);
                 p2.setHp(p2.getHp() - calc);
             }

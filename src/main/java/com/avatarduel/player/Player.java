@@ -16,11 +16,11 @@ import com.avatarduel.state.State;
 public class Player {
     private int hp;
     protected ArrayList<Card> hand;
-    public Deck pDeck;
-    public Map<Element, Pair<Integer,Integer>> element;
-    public Map<Integer,Card> summonedCards;
-    public Map<Integer,Pair<Boolean,Boolean>> cardInfo;
-    public List<Integer> powerUp;
+    private Deck pDeck;
+    private Map<Element, Pair<Integer,Integer>> element;
+    private Map<Integer,Card> summonedCards;
+    private Map<Integer,Pair<Boolean,Boolean>> cardInfo;
+    private List<Integer> powerUp;
     private HBox healthBar = new HBox();
 
     public Player(){
@@ -42,8 +42,28 @@ public class Player {
         hand.set(idx,null);
         hand.remove(null);
         HandView.initHand(this);
-        this.hp -= 10;
     }
+
+    public Map<Element,Pair<Integer,Integer>> getElement(){
+        return element;
+    }   
+
+    public Map<Integer,Card> getSummonedCards(){
+        return summonedCards;
+    }
+
+    public Map<Integer,Pair<Boolean,Boolean>> getCardInfo(){
+        return cardInfo;
+    }  
+
+    public List<Integer> getPowerUp(){
+        return powerUp;
+    }
+
+    public Deck getDeck(){
+        return pDeck;
+    }                        
+                    
 
     public int getHp(){
         return this.hp;
@@ -122,7 +142,7 @@ public class Player {
         if (!(peekCard(click) instanceof Destroy))
         for (int i = x; i < x+6; i ++){
             if (summonedCards.get(i) == null){
-                System.out.printf("%d\n%s\n",i,peekCard(click).getDetails());
+                // System.out.printf("%d\n%s\n",i,peekCard(click).getDetails());
                 summonedCards.put(i,peekCard(click));
                 FieldView.boxes.get(i).getChildren().add(Card.drawCard(peekCard(click),100));
                 cardInfo.put(i,new Pair<>(true,true));

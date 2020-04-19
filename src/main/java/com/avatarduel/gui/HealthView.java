@@ -17,11 +17,22 @@ import javafx.scene.paint.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+
+/**
+ * HealthView is responsible for updating visualization of each player's health
+ * @author mee
+ */
 public class HealthView{
     public static ProgressBar healthp1 = new ProgressBar();
     
     public static ProgressBar healthp2 = new ProgressBar();
 
+    /**
+     * Initialize hpbar
+     * @param pe Player of said hp bar
+     * @param barHp the bar to change
+     * @return The instance of the health bar to add to the right parent
+     */
     public static BorderPane hpBar(Player pe, ProgressBar barHp){
         int maxHp = 80;
         double curHP;
@@ -51,8 +62,12 @@ public class HealthView{
         return barPane;
     }
     
-public static void updateHp(Player p){
+    /**
+     * Update hp
+     * @param p Player whose health changed
+     */
+    public static void updateHp(Player p){
         ProgressBar pb = p == State.p1 ? healthp1 : healthp2;
-        pb.setProgress(((double)p.getHp())/80d);
+        pb.setProgress(((double)p.getHp())/80.0);
     }
 }

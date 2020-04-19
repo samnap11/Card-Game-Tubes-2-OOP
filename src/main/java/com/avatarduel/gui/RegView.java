@@ -14,17 +14,24 @@ import javafx.scene.layout.BorderPane.*;
 import javafx.scene.paint.*;
 import javafx.scene.text.*;
 
-
+/**
+ * HealthView is responsible for updating visualization of each player's health
+ * @author mee
+ */
 public class RegView{
     public static Pane Screen = new Pane();
     
+    /**
+     * Loads the register screen
+     * @param app the game instance
+     */
     public static void loadRegScreen(AvatarDuel app){
         Screen.setMinSize(1400,925);
         Image back = new Image("com/wallpp.jpg");
         ImageView bg = new ImageView(back);
         Color c = Color.web("#69CDF8",1.0);
         bg.setFitWidth(1400);
-        bg.setFitHeight(920);
+        bg.setFitHeight(930);
 
         TextArea name1 = new TextArea("Player 1");
         name1.setMaxSize(150,15);

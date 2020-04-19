@@ -12,9 +12,11 @@ public class Destroy extends Skill {
     public void effect(Player p,int idx) {
         // summonedCharacter.setDestroyed(true);
         // Player p2 = p == State.p1 ? State.p2 : State.p1;
-        if (p.summonedCards.get(idx) instanceof Skill){
+        // Player pl = idx > 11 ? State.p1 : State.p2;
+        if (p.getSummonedCards().get(idx) instanceof Skill){
             // p.summonedCharacter.get(p.summonedCharacter.get(idx).getTarget()).takeBonus(p.summonedCharacter.get(idx).get)
-            ((Skill) p.summonedCards.get(idx)).deeffect(p,((Skill) p.summonedCards.get(idx)).getTarget());
+            Player pl = ((Skill) p.getSummonedCards().get(idx)).getTarget() > 11 ? State.p1 : State.p2;
+            ((Skill) p.getSummonedCards().get(idx)).deeffect(pl,((Skill) p.getSummonedCards().get(idx)).getTarget());
         }
         p.removeFieldCard(idx);
     }

@@ -25,17 +25,14 @@ public class State{
         p1 = new Player();
         p2 = new Player();
         try{
-            // all.inputDeck(a.loadCards());
-            // System.out.println("Hai\n");
             p1.fillDeck(a.loadCards());
             p2.fillDeck(a.loadCards());
-            // System.out.printf("%d\n%d\n",p1.pDeck.isi.size(),p2.pDeck.isi.size());
         }catch(Exception E){
         }
         for (int i =0 ; i < 9; i ++)
-            p1.pDeck.shuffle();
+            p1.getDeck().shuffle();
         for (int i =0 ; i < 22; i ++)
-            p2.pDeck.shuffle();
+            p2.getDeck().shuffle();
         for (int i = 0; i < 6; i++){
             p1.takeCard();
             p2.takeCard();
@@ -48,7 +45,6 @@ public class State{
     }
 
     public static void nextPhase(){
-        System.out.println(State.gamePhase);
         if (gamePhase == Phase.DRAW){
             gamePhase = Phase.MAIN;
         }
@@ -62,7 +58,6 @@ public class State{
         else if (gamePhase == Phase.END){
             gamePhase = Phase.MAIN;
         }
-        System.out.println(State.gamePhase);
     }   
 
     public static boolean checkTurn(Player p){
