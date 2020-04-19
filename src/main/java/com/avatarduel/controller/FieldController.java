@@ -68,7 +68,7 @@ public class FieldController{
     public static void setFieldHover(int idx, Player P){
             FieldView.boxes.get(idx).setOnMouseEntered(e ->{
                 if (P.getSummonedCards().get(idx) != null)
-                    CardOnDisplay.changeDisplay(P.getSummonedCards().get(idx));
+                    CardView.changeDisplay(P.getSummonedCards().get(idx));
             });
     }
 }

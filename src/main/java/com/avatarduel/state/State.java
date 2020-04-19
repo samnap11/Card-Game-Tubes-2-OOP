@@ -10,6 +10,10 @@ import com.avatarduel.deck.Deck;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 
+/**
+ * State of the game
+ * @author me
+ */
 public class State{
     public static Phase gamePhase;//0 drawing,1 main, 2 battle, 3 main2 ,4 end
     public static int turn;
@@ -17,7 +21,9 @@ public class State{
     public static int clickHand;
     public static int clickField;
 
-
+    /**
+     * initialize game state
+     */
     public static void init(){
         CardLoader a = new CardLoader();
         // Deck all = new Deck(300);
@@ -44,6 +50,9 @@ public class State{
         clickField = -1;
     }
 
+    /**
+     * Change the phase to next
+     */
     public static void nextPhase(){
         if (gamePhase == Phase.DRAW){
             gamePhase = Phase.MAIN;
@@ -60,10 +69,18 @@ public class State{
         }
     }   
 
+    /**
+     * Check turn
+     * @param p checked player
+     * @return true if it is p's turn
+     */
     public static boolean checkTurn(Player p){
         return p == p1 ? turn == 1 : turn == 2;
     }
 
+    /**
+     * Ending turn
+     */
     public static void endTurn(){
         Buttons.init();
         if (turn % 2 == 1){

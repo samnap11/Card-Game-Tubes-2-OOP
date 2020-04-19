@@ -39,8 +39,8 @@ public class MainView{
         HBox store = new HBox();
         store.setMinHeight(440);
         store.setAlignment(Pos.CENTER);
-        CardOnDisplay.cardDisp.getChildren().add(Card.drawCard(new Character(),230));
-        store.getChildren().add(CardOnDisplay.cardDisp);
+        CardView.cardDisp.getChildren().add(CardView.drawCard(new Character(),230));
+        store.getChildren().add(CardView.cardDisp);
 
         BorderPane cardLayout2 = new BorderPane();
         cardLayout2.setMinWidth(250);

@@ -43,13 +43,13 @@ public class HandView{
         for (int i = 0; i < p.sizeHand(); i ++){
             Card card = p.peekCard(i);
             // System.out.printf("%s\n",card.getImg());
-            BorderPane view = Card.drawCard(card,60);
+            BorderPane view = CardView.drawCard(card,60);
             HandController.showOnHover(view,p,i);
             HandController.setOnClicked(view,p,i);
             if (p == State.p2) view.setRotate(180);
             if ((i == State.clickHand) || (i + 10 == State.clickHand)) view.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
             if (State.checkTurn(p)) hand.getChildren().add(view);
-            else hand.getChildren().add(Card.closedCard(60));
+            else hand.getChildren().add(CardView.closedCard(60));
         }
     }
 }

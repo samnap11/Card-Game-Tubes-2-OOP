@@ -126,7 +126,7 @@ public class Player {
         int click = this == State.p1 ? State.clickHand : State.clickHand - 10;
         element.put(peekCard(click).getElement(),new Pair<>(element.get(peekCard(click).getElement()).getKey() - ((com.avatarduel.card.Character) peekCard(click)).getCost(),element.get(peekCard(click).getElement()).getValue()));
         summonedCards.put(idx,peekCard(click));
-        FieldView.boxes.get(idx).getChildren().add(Card.drawCard(peekCard(click),100));
+        FieldView.boxes.get(idx).getChildren().add(CardView.drawCard(peekCard(click),100));
         cardInfo.put(idx,new Pair<>(false,true));
         // setChosen(idx,this);
         removeHand(click);
@@ -144,7 +144,7 @@ public class Player {
             if (summonedCards.get(i) == null){
                 // System.out.printf("%d\n%s\n",i,peekCard(click).getDetails());
                 summonedCards.put(i,peekCard(click));
-                FieldView.boxes.get(i).getChildren().add(Card.drawCard(peekCard(click),100));
+                FieldView.boxes.get(i).getChildren().add(CardView.drawCard(peekCard(click),100));
                 cardInfo.put(i,new Pair<>(true,true));
                 break;
             }

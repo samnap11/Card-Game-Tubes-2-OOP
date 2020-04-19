@@ -60,7 +60,7 @@ public class FieldSide{
         deckP.getChildren().add(hp);
         main.setBottom(deckP);
         deckUI.getChildren().add(main);
-        main.setCenter(Card.closedCard(100));
+        main.setCenter(CardView.closedCard(100));
         return deckUI;
     }
 

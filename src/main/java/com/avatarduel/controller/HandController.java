@@ -24,7 +24,7 @@ public class HandController{
      * @param idx idx of the card in player's hand
      */
     public static void showOnHover(BorderPane card,Player a, int idx){
-        card.setOnMouseEntered(e -> CardOnDisplay.changeDisplay(a.peekCard(idx)));
+        card.setOnMouseEntered(e -> CardView.changeDisplay(a.peekCard(idx)));
     }   
 
     /**

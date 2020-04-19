@@ -112,7 +112,7 @@ public class FieldView{
         for (int i = 0 + x; i < 12 + x; i++){
             boxes.get(i).getChildren().clear();
             if (p.getSummonedCards().get(i) != null){
-                BorderPane card = Card.drawCard(p.getSummonedCards().get(i),100);
+                BorderPane card = CardView.drawCard(p.getSummonedCards().get(i),100);
                 if (p == State.p2) card.setRotate(180);
                 if (!p.getCardInfo().get(i).getValue()) card.setRotate(90);
                 if (i == State.clickField) card.setBorder(new Border(new BorderStroke(Color.RED,BorderStrokeStyle.SOLID,null, new BorderWidths(2))));
