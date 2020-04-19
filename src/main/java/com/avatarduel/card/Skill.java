@@ -4,6 +4,11 @@ package com.avatarduel.card;
 import com.avatarduel.player.Player;
 // import com.sun.jmx.snmp.SnmpUnknownModelException;
 
+/**
+ * Skill card which provides certain effect to a targeted character card
+ * This card is a child class of Card
+ * @author Samuel 
+ */
 public abstract class Skill extends Card implements HasCost{
     protected int power_cost;
     protected int target;

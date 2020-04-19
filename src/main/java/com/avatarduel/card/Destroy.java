@@ -3,6 +3,11 @@ package com.avatarduel.card;
 import com.avatarduel.player.Player;
 import com.avatarduel.state.State;
 
+/**
+ * Destroy card to destroy a targeted character card
+ * This class is a child class of Skill
+ * @author Samuel
+ */
 public class Destroy extends Skill {
     /**
      * Constructor of the destroy card

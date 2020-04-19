@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
+/**
+ * The loader for all of the cards from resources to the game
+ * @author Samuel
+ */
 public class CardLoader {
     public static ArrayList<Card> ret;
     private static final String LAND_CSV_FILE_PATH = "src/main/resources/com/avatarduel/card/data/land.csv";

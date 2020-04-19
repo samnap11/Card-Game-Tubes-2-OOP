@@ -6,6 +6,10 @@ import com.avatarduel.player.Player;
 import com.avatarduel.gui.*;
 import javafx.util.Pair;
 
+/**
+ * Character card which is the child class of Card and implement HasCost interface
+ * @author Samuel
+ */
 public class Character extends Card implements HasCost{
     protected int attack;
     protected int defense;
