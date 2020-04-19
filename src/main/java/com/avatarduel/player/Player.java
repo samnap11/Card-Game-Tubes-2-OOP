@@ -13,6 +13,10 @@ import com.avatarduel.gui.*;
 import com.avatarduel.deck.Deck;
 import com.avatarduel.state.State;
 
+
+/**
+ * Representation of a Player
+ */
 public class Player {
     private int hp;
     protected ArrayList<Card> hand;
