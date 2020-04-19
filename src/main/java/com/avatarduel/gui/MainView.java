@@ -23,7 +23,14 @@ import com.avatarduel.gui.Buttons;
 import com.avatarduel.gui.HandView;
 import com.avatarduel.controller.*;
 
+/**
+ * MainView is responsible for instanciating the gameplay interface
+ * @author me
+ */
 public class MainView{
+    /**
+     * Instanciate all parts of the gameplay interface and puts other Views in the corresponding spot
+     */
     public static void gameView(){//fungsi ini panjang karena menginisiasi segalanya, jadi menurut saya tidak apa apa panjang
         Image back = new Image("com/wallppg.jpg");
         ImageView bg = new ImageView(back);

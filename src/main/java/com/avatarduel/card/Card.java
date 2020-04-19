@@ -18,10 +18,6 @@ public abstract class Card {
     protected Element element;
     protected String img;
 
-    public static Card getSuzy(){
-        return new Character("Suzy Bae with Glasses","Can't blame gravity to fall in love with this",Element.WATER,"com/bae.jpg",99,99,99);
-    }
-
     public Card(String name, String desc, Element element,String img) {
         this.name = name;
         this.description = desc;

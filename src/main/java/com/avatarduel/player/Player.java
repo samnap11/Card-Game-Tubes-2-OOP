@@ -31,11 +31,11 @@ public class Player {
         this.cardInfo = new HashMap<>();
         this.powerUp = new ArrayList<>();
         this.pDeck = new Deck();
-        this.element.put(Element.WATER,new Pair<>(100,100));
-        this.element.put(Element.AIR,new Pair<>(100,100));
-        this.element.put(Element.FIRE,new Pair<>(100,100));
-        this.element.put(Element.EARTH,new Pair<>(100,100));
-        this.element.put(Element.ENERGY,new Pair<>(100,100));
+        this.element.put(Element.WATER,new Pair<>(1,1));
+        this.element.put(Element.AIR,new Pair<>(1,1));
+        this.element.put(Element.FIRE,new Pair<>(1,1));
+        this.element.put(Element.EARTH,new Pair<>(1,1));
+        this.element.put(Element.ENERGY,new Pair<>(1,1));
     }
     
     public void removeHand(int idx){
