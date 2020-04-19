@@ -12,6 +12,10 @@ import javafx.scene.image.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 
+/**
+ * The card which is the main thing about the game
+ * @author Samuel
+ */
 public abstract class Card {
     protected String name;
     protected String description;

@@ -3,6 +3,10 @@ package com.avatarduel.card;
 
 import com.avatarduel.player.Player;
 
+/**
+ * This is for the Aura card which is the child class of Skill
+ * @author Samuel
+ */
 public class Aura extends Skill {
     protected int attack_change;
     protected int defense_change;

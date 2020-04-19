@@ -5,6 +5,10 @@ package com.avatarduel.card;
 import com.avatarduel.player.Player;
 import com.avatarduel.gui.*;
 
+/**
+ * Land card which will provide power to the player
+ * @author Samuel
+ */
 public class Land extends Card {
     int power_provided;
 

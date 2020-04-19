@@ -2,6 +2,12 @@ package com.avatarduel.card;
 
 import com.avatarduel.player.Player;
 
+/**
+ * Power Up card which will provides bonus (positive or negative)
+ * to a character card
+ * This class is a child class of Skill
+ * @author Samuel
+ */
 public class PowerUp extends Skill {
     /**
      * Constructor for the power up card
