@@ -45,11 +45,15 @@ root
 
 ```
 ## Screenshots
-![Register Screen](Main.jpg)
-![Gameplay Screen](Play.jpg)
+![Register Screen](images/Main.jpg)
+![Gameplay Screen](images/Play.jpg)
 
 
 
 ## How to start the game
 0. 'gradlew' untuk memastikan gradle terpasang
 1. 'gradlew run' game akan mulai
+
+
+## Tambahan
+- Dokumentasi tersedia di build/documentations/index.html setelah command 'gradlew build'
