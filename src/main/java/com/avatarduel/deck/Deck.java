@@ -8,22 +8,22 @@ public class Deck {
     public Stack<Card> isi;
     public int kap;
     
+    //default inzialitazion deck with root capacity 60 and stack 0
     public Deck(){
-        // user = " ";
         isi = new Stack<>();
         kap = 60;
 
     }
+    //inizalitzation with input capacity
     public Deck(int kap){
         isi = new Stack<>();
         this.kap = kap;
     }
-
+    //return update size in deck
     public int getSize(){
         return isi.size();
     }
-    // melakukan pengocokan stack supaya isi menjadi acak
-    // tidak dapat dilakukan shuffle kalo stack kosong
+    //doing shuffle to card in deck
     public void shuffle(){
         List<Card> dck = new ArrayList<>();
         for(Card i: isi){
@@ -35,8 +35,7 @@ public class Deck {
             isi.push(j);
         }
     }
-    // buat ngisi kartu kedalam deck
-    //outputnya deck sesuai ukuran stack
+    //input card to deck 
     public void inputDeck(ArrayList<Card> Cards){
         for (int i = 0; i < Cards.size() && i < kap; i++){
             // System.out.printf("Hai\n");
@@ -44,8 +43,7 @@ public class Deck {
         }
     }
 
-    //melakukan pop satu kartu dan mengurangi size
-    //tidak dapat melakukan pop jika kosong
+    //take one card from deck
     public Card Draw(){
         return isi.pop();
     }
